@@ -1,0 +1,243 @@
+body{
+    font-family: var(--bs-body-font-family);
+}
+
+i{
+    all: unset;
+}
+#logout, #delete-acc{
+    display: flex;
+    gap: 6px;
+}
+.main-div{
+    box-shadow: none;
+    background-color: transparent;
+    color: rgb(202,202,202);
+    width: 95%;
+    /* border: 2px solid white; */
+    font-size: 18px;
+    /* flex-wrap: wrap; */
+}
+.account-func-btns{
+    display: inline-flex;
+    gap: 20px;
+    /* border: 2px solid red; */
+    justify-content: center;
+    margin-top: 1.5%;
+}
+.user-info{
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-wrap: wrap;
+}
+.movies-watched{
+    /* border: 2px solid green; */
+    margin-top: 1.5%;
+}
+.error-message{
+    margin-top: 1%;
+}
+#delete-account-confirm{
+    color: black;
+}
+.delete-acc-modal-content{
+    background-color: rgb(255, 252, 252);
+    border-color: black;
+}
+.information, .info-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid white; */
+    gap: 1rem;
+}
+.information{
+    width: 65%;
+}
+.info-btns{
+    /* width:35%; */
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.info-btns .btn{
+    width: 45%;
+}
+.info-input{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+input{
+    height: 36px;
+    background-color: rgb(150, 150, 150);
+    border: none;
+}
+.not-disabled{
+    background-color: rgb(224, 224, 224);
+}
+.user-error-message{
+        width: fit-content;
+        margin: auto;
+        font-size: 25px;
+        background-color: lightpink;
+        color: black;
+        padding: 0.5%;
+        margin-top: 2.5%;
+        border-radius: 10px;
+        padding-left: 1%;
+        padding-right: 1%;
+        margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 20px;
+        /* position: absolute;
+        top: 20%;
+        left: 13%; */
+}
+.movie-watched-text{
+    font-size: 28px;
+    font-weight: 600;
+    width: fit-content;
+}
+.movies{
+    justify-content: center; 
+    display: inline-flex; 
+    flex-wrap: wrap; 
+    gap: 10px;
+    line-height: 30px;
+}
+.media-template{
+    position: relative;
+    /* border: 1px solid black;  */
+    width: min-content; 
+    overflow-wrap: anywhere; 
+    justify-content: center;
+    /* background-color: #f0f0f0; */
+    color: #f0f0f0;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 35px;
+    cursor: pointer;
+}
+.media-image{
+    width: 80px;
+    height: 120px;
+    aspect-ratio: 2/3;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+/* .no-media-image{
+    width: 80px;
+    height: 120px;
+    border-bottom: solid 1px black;
+    border-radius: 10px;
+} */
+.media-title{
+    font-size: 0px;
+    font-weight: normal;
+}
+.media-title-hover{
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    width: fit-content;
+    /* max-width: 150px; */
+    display: block;
+    /* flex-wrap: wrap; */
+    color: black;
+    /* padding: 0.2rem; */
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 99;
+    overflow: visible;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    /* border: 1px solid white */
+}
+.hidden{
+    display: none;
+}
+.down-arrow-icon{
+    /* border: 1px solid green; */
+    height: min-content;
+    padding: unset !important;
+    padding: none;
+    display: block;
+    line-height: 0px;
+    margin: 0;
+    padding: 0;
+}
+.page-toggle-cont{
+    /* border: 2px solid plum; */
+}
+.no-movies{
+    font-size: 25px;
+    font-weight: 600px;
+    margin-top: 1rem;
+}
+.playlist{
+    /* border:2px solid white; */
+    margin-top: 24px;
+}
+.playlist-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* overflow: hidden; */
+    gap: 10px;
+}
+.playlist-content .media-template{
+    margin-top: 5px;
+}
+.playlist-name{
+    width: fit-content;
+    font-size: 28px;
+    font-weight: 600;
+}
+.see-more{
+    width: 80px;
+    height: 120px;
+}
+.see-more button{
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 600;
+}
+hr{
+    margin-bottom: 8px;
+}
+.see-all-playlists, .create-playlist{
+    color: inherit;
+    /* background-color: rgba(0,0,0,0.3); */
+    /* height: 5%; */
+    font-size: 22px;
+    display: inline-flex;
+    margin: auto;
+    gap: 8px;
+    align-items: center;
+}
+.see-all-playlists{
+    margin-top: 24px;
+}
+.create-playlist{
+    margin-top: 24px;
+}
+.see-all-playlists a{
+    color: inherit !important;
+}
+.create-playlist div{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.see-all-playlists i, .create-playlist i{
+    /* border: 2px solid white; */
+    line-height: 100%;
+    height: min-content;
+    margin-top: 0.3rem;
+}
+.hidden{
+    display: none;
+}

@@ -1,0 +1,155 @@
+@font-face {
+    font-family: logo-font;
+    src: url('../font/lato.thin.ttf');
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/collage.jpg");
+    background-position: center;
+    /* background-size: cover; */
+    filter: brightness(9%); /* Apply blur here */
+    z-index: -1; /* Send background behind the content */
+    pointer-events: none; /* Ensure it doesn’t interfere with clicks */
+    background-size: cover;
+}
+body{
+    color:rgb(202, 202, 202);
+    background-color: black;
+}
+.main-div{
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 1%;
+}
+.app-name{
+    font-size: 45px;
+    font-family: 'logo-font', serif;
+    font-weight:600;
+    background-color: #f0f0f0;
+    display: flex;
+    padding-right: 0.75rem;
+    border-radius: 35px;
+    color: black;
+}
+.app-name img{
+    width: 100px;
+    aspect-ratio: 5/3;
+}
+.search-button{
+    border: 2px solid rgb(202, 202, 202) !important;
+    color: rgb(202, 202, 202);
+    margin: 0;
+    border-radius: 10px;
+    font-size: 25px;
+    transition: color 0.55s ease;
+    width: 350px;
+}
+.btn-bckg{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 0%;
+    height: 100%;
+    top:0;
+    left:0;
+    right: 0;
+    background-color: rgb(202, 202, 202);
+    border-radius: 10px;
+    transition: width 0.55s ease-out, height 0.55s ease-out;
+    pointer-events: none;
+}
+.butts{
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    /* border: 2px solid green; */
+    padding: 0px;
+    display: flex;
+    margin-top: 2%;
+}
+@keyframes fillup {
+    0%{
+        background-color: transparent;
+    }
+    100%{
+        background-color: rgb(202, 202, 202);
+    }
+}
+.butts:hover .btn-bckg{
+    width: 100%;
+    height: 100%;
+}
+.butts:hover .search-button{
+    color: black;
+}
+.profile-cont{
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    justify-content: right;
+    /* border: 2px solid red; */
+    padding-right: 3%;
+    margin-top: 2%;
+    font-size: 27px;
+    display: flex;
+    gap: 12px;
+}
+.svg{
+    height: 40px;
+    width: 40px;
+    /* border: 2px solid green; */
+}
+i{
+    font-size: 38px;
+    /* border: 2px solid green; */
+    align-self: center;
+}
+.icon{
+    border: 2px solid red;
+}
+.profile{
+    /* border: 2px solid white; */
+    align-content: center;
+}
+.svg:hover + .profile{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.profile:hover{
+    /* text-decoration: underline; */
+    cursor: pointer;
+}
+a{
+    color: rgb(202, 202, 202);
+}
+.profile-signin:hover{
+    text-decoration: none !important;
+}
+.footer{
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    bottom: 1%;
+    display: inline-flex;
+    justify-content: center;
+    cursor: default;
+}
+.footer span{
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+    justify-self: center;
+}
+.footer img{
+    height: 14px;
+}

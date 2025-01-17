@@ -1,0 +1,7 @@
+/node_modules/
+.env
+/db/dbAdmin.js
+/db/dbTrials.js
+/creds.txt
+/testing.html
+/testing.js

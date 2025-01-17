@@ -1,0 +1,54 @@
+input{
+    width: 300px;
+    height: 40px;
+    padding-left: 5px;
+}
+.forms-cont{
+    /* border: 2px solid white; */
+    display: flex;
+    flex-wrap: wrap;
+    width: 850px;
+    justify-content: space-evenly;
+    gap: 25px;
+    margin-top: 1%;
+}
+.div-with-list{
+    /* border: 2px solid green; */
+    margin: 0px;
+}
+.add-more-inputs, .remove-inputs{
+    /* border: 2px solid red; */
+    width: fit-content;
+    height: 40px;
+    align-self: center;
+    margin: 0px;
+}
+.bi-plus-circle, .bi-dash-circle{
+    font-size: 18px;
+    color: rgb(202, 202, 202);
+}
+#search-form-1,#search-form-2,#search-form-3,#search-form-4
+{
+    /* border: 2px solid red; */
+    display: inline-flex;
+    gap: 0px;
+}
+.hidden{
+    display: none !important;
+}
+#search-btn{
+    margin-top: 1%;
+}
+#know-them-from{
+    font-size: 30px;
+    margin-top: 1%;
+}
+.modal-body{
+    border-bottom: 1px solid #dee2e6;
+    font-size: 20px;
+}
+.last-modal-body{
+    border-bottom: none;
+    font-weight: 700;
+    font-size: 25px;
+}

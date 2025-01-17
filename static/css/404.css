@@ -1,0 +1,31 @@
+.main-content{
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
+    /* border: 2px solid red; */
+}
+.f404-text{
+    width: fit-content;
+    margin: auto;
+    font-size: 40px;
+    /* border: 2px solid yellow; */
+    text-align: center;
+}
+.f404-text span{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* border: 2px solid white; */
+}
+.img-cont{
+    width: fit-content;
+    margin: auto;
+    /* border: 2px solid green; */
+}
+img{
+    width: 900px;
+    border-radius: 20px;
+    /* border: 2px solid blue; */
+}
+body{
+    background-color: black !important;
+    color: rgb(202,202,202) !important;
+}

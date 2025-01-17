@@ -1,0 +1,67 @@
+@font-face {
+    font-family: logo-font;
+    src: url('../font/lato.thin.ttf');
+}
+.title-bar{
+    /* border: 2px solid white; */
+    padding: 0.2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    justify-content: space-around;
+}
+.app-name{
+    /* width: 30%; */
+    /* border: 2px solid red; */
+    /* align-content:end; */
+    /* font-weight: bolder; */
+    font-size: 25px;
+    overflow-wrap: anywhere;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: 'logo-font', sans-serif;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    display: flex;
+    font-weight: 600;
+    padding-right: 0.75rem;
+    border-radius: 35px;
+}
+.app-name img{
+    width:80px;
+    /* border: 2px solid black; */
+}
+.app-name div{
+    /* background-color:rgb(224, 224, 224); */
+    /* padding: 0.1rem 0.5rem; */
+    /* border-radius: 15px; */
+    /* border: 2px solid black; */
+    align-self: center;
+    /* height: 100%; */
+    color: black;
+}
+.profile-cont{
+    /* border: 2px solid green; */
+    /* width: 30%; */
+    font-size: 27px;
+    display: flex;
+    gap: 12px;
+    color: rgb(202,202,202);
+    justify-content: center;
+    /* padding-right: 3rem; */
+}
+.profile-signin{
+    color: rgb(202,202,202);
+    text-decoration: none;
+    border-bottom: 3px solid rgb(202,202,202);
+    padding-bottom: 0px;
+    height: fit-content;
+}
+.profile-signin:hover{
+    color: rgb(202, 202, 202);
+    text-decoration: none !important;
+}
+.profile-cont i{
+    font-size: 32px;
+    /* border: 2px solid red; */
+}
