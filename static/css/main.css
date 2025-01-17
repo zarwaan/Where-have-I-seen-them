@@ -382,9 +382,6 @@ body{
     line-height: 100%;
     margin-top: 7px;
 }
-.watch-cont{
-    /* width:max-content !important; */
-}
 .sel-play-mod-body{
     max-height: 530px;
 }
@@ -417,8 +414,6 @@ body{
     width: 16px;
     height: 16px;
     border-width: 10px;
-}
-.playlist{
 }
 .hidden{
     display: none;

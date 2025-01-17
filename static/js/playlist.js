@@ -40,7 +40,7 @@ async function getPlaylistId(name){
     if(name.toLowerCase()==='watchlist') return 'watchlist';
     else{
         try {
-            const playlistIdResponse = await fetch('http://localhost:3000/get-playlist-id',{
+            const playlistIdResponse = await fetch('/get-playlist-id',{
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -71,7 +71,7 @@ async function createMediaCards() {
     let playlistMedia;
     if(playlistId==='watchlist'){
         try {
-            const watchlistResponse = await fetch('http://localhost:3000/get-watchlist',{
+            const watchlistResponse = await fetch('/get-watchlist',{
                 method: 'GET',
                 credentials: 'include'
             });
@@ -89,7 +89,7 @@ async function createMediaCards() {
     }
     else {
         try {
-            const playlistMediaResponse = await fetch("http://localhost:3000/get-playlist-media",{
+            const playlistMediaResponse = await fetch("/get-playlist-media",{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -165,7 +165,7 @@ async function removeFromPlaylist(card) {
         // remove from watchlist
         console.log('hi');
         try{
-            const removeFromWatchlistResponse = await fetch(`http://localhost:3000/remove-from-watchlist`,{
+            const removeFromWatchlistResponse = await fetch(`/remove-from-watchlist`,{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -190,7 +190,7 @@ async function removeFromPlaylist(card) {
     {
         //remove from playlist
         try{
-            const removeFromPlaylistResponse = await fetch(`http://localhost:3000/remove-from-playlist`,{
+            const removeFromPlaylistResponse = await fetch(`/remove-from-playlist`,{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -260,7 +260,7 @@ document.getElementById('save-name-changes').onclick = async () => {
     // save playlist name and show appropriate errors
     if((new URLSearchParams(window.location.search).has('new'))){
         try {
-            const newPlaylistResponse = await fetch("http://localhost:3000/create-playlist",{
+            const newPlaylistResponse = await fetch("/create-playlist",{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -286,7 +286,7 @@ document.getElementById('save-name-changes').onclick = async () => {
     }
     else {
         try {
-            const changePlaylistNameResponse = await fetch('http://localhost:3000/change-playlist-name',{
+            const changePlaylistNameResponse = await fetch('/change-playlist-name',{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -325,7 +325,7 @@ if(document.getElementById('confirm-delete'))
 document.getElementById('confirm-delete').onclick = async () => {
     //delete playlist and go to all playlists
     try{
-        const removePlaylistResponse = await fetch(`http://localhost:3000/remove-playlist`,{
+        const removePlaylistResponse = await fetch(`/remove-playlist`,{
             method: "POST",
             credentials: 'include',
             headers: {

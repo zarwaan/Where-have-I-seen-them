@@ -39,16 +39,13 @@ app.get('/signin', (req, res) => {
 app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/signup.html'));
 });
-app.get('/test', (req, res) => {
-    res.sendFile(path.join(__dirname, '../testing.html'));
-});
 app.get('/profile', (req,res) => {
     res.sendFile(path.join(__dirname, '../templates/profile.html'));
 });
 app.get('/actor-group', (req,res) => {
     res.sendFile(path.join(__dirname, '../templates/searchtwo.html'));
 });
-app.get('/changepassword', (re,res) => {
+app.get('/users/:username/changepassword',authorizeUser, (req,res) => {
     res.sendFile(path.join(__dirname, '../templates/changePassword.html'));
 });
 app.get('/favicon.ico', (req,res) => {
@@ -310,7 +307,6 @@ app.post('/update-user-details',(httpReq,httpRes) => {
     if(username==='' || firstName===''){
         return httpRes.status(400).json({message:"Please fill all required fields!", details:null, type: "ERR_EMPTY_CREDENTIALS"});
     }
-    //USE REGEX TO CHECK IF USERNAME DOESNT HAVE SPECIAL CHARACTERS 
     if(!/^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/.test(username)){
         if(username.length < 3){
             return httpRes.status(400).json({message:"Username must be more than 3 characters!", details:null, type: "ERR_INVALID_CREDENTIALS"});

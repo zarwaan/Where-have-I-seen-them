@@ -337,7 +337,7 @@ async function getActorCredits(actorId){
 
 async function getWatchedMedia() {
     try {
-        const watchedMediaResponse = await fetch("http://localhost:3000/watched-media",{
+        const watchedMediaResponse = await fetch("/watched-media",{
             method: "Get",
             credentials: 'include',
         });

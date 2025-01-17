@@ -32,7 +32,7 @@ inputMedia.addEventListener('input', () => {
 
 async function getApiKey() {
     try {
-        const apikeyResponse = await fetch("http://localhost:3000/api-key");
+        const apikeyResponse = await fetch("/api-key");
 const apiResult = await apikeyResponse.json();
 const MY_API_KEY = apiResult['api_key'];
 const MY_BEARER_TOKEN = apiResult['bearer_token'];
@@ -463,7 +463,7 @@ async function toggleWatched(mediaId,mediaType){
     // console.log(endpoint);
 
     try{
-        const logMediaResponse = await fetch(`http://localhost:3000/${endpoint}`,{
+        const logMediaResponse = await fetch(`/${endpoint}`,{
             method: "POST",
             credentials: 'include',
             headers: {
@@ -494,7 +494,7 @@ async function setWatched(mediaId,mediaType){
     }
     else{
         try{
-            const watchStatusResponse = await fetch("http://localhost:3000/get-watch-status",{
+            const watchStatusResponse = await fetch("/get-watch-status",{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -535,7 +535,7 @@ async function fetchAllPlaylists(id,type) {
     watchlistCheck.dataset.whistPlaylistId = 'watchlist';
 
     try{
-        const checkInWatchlistResponse = await fetch("http://localhost:3000/check-in-watchlist",{
+        const checkInWatchlistResponse = await fetch("/check-in-watchlist",{
             method: "POST",
             credentials: 'include',
             headers: {
@@ -585,7 +585,7 @@ async function fetchAllPlaylists(id,type) {
         playlistCheck.dataset.whistPlaylistId = playlistId;
 
         try{
-            const checkInPlaylistResponse = await fetch("http://localhost:3000/check-in-playlist",{
+            const checkInPlaylistResponse = await fetch("/check-in-playlist",{
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -625,7 +625,7 @@ async function addToPlaylist(id, type) {
         if(playlist.checked && !playlist.disabled){
             if(playlist.dataset.whistPlaylistId==='watchlist'){
                 try{
-                    const addToWatchlistResponse = await fetch('http://localhost:3000/add-to-watchlist',{
+                    const addToWatchlistResponse = await fetch('/add-to-watchlist',{
                         method: "POST",
                         credentials: 'include',
                         headers: {
@@ -645,7 +645,7 @@ async function addToPlaylist(id, type) {
             }
             else{
                 try{
-                    const addToPlaylistResponse = await fetch('http://localhost:3000/add-to-playlist',{
+                    const addToPlaylistResponse = await fetch('/add-to-playlist',{
                         method: "POST",
                         credentials: 'include',
                         headers: {

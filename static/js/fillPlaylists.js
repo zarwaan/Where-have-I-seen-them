@@ -21,7 +21,7 @@ async function createList(name, id, playlistMedia = []) {
 
     if(id==='watchlist'){
         try {
-            const watchlistResponse = await fetch('http://localhost:3000/get-watchlist',{
+            const watchlistResponse = await fetch('/get-watchlist',{
                 method: 'GET',
                 credentials: 'include'
             });
@@ -62,7 +62,7 @@ async function createList(name, id, playlistMedia = []) {
         mediaImage.classList.add('media-image');
         mediaCard.appendChild(mediaImage);
         mediaCard.onclick = () => {
-            // window.open(`http://localhost:3000/main?mediaName=${mediaName}&mediaId=${media.media_id}&mediaType=${mediaType}`,'_self');
+            // window.open(`/main?mediaName=${mediaName}&mediaId=${media.media_id}&mediaType=${mediaType}`,'_self');
             window.open(`/${mediaType}/${media.media_id}-${mediaName.toLowerCase().replaceAll(' ','-')}`,"_self")
         }
         // playlistContent.appendChild(mediaCard);
@@ -106,7 +106,7 @@ export async function fetchPlaylists() {
     let playlists = [];
     try {
         console.log('hi');
-        const userPlaylistsResponse = await fetch("http://localhost:3000/all-playlists",{
+        const userPlaylistsResponse = await fetch("/all-playlists",{
             method: "GET",
             credentials: 'include',
         });
@@ -117,7 +117,7 @@ export async function fetchPlaylists() {
                 return playlists;
             for(const playlist of fetchedPlaylists) {
                 try {
-                    const playlistMediaResponse = await fetch("http://localhost:3000/get-playlist-media",{
+                    const playlistMediaResponse = await fetch("/get-playlist-media",{
                         method: "POST",
                         credentials: 'include',
                         headers: {

@@ -43,7 +43,7 @@ document.getElementById('sign-in-form').addEventListener('submit',async (e) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     try {
-        const loginRequest = await fetch('http://localhost:3000/login',{
+        const loginRequest = await fetch('/login',{
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -82,7 +82,7 @@ document.getElementById('sign-up-form').addEventListener('submit',async (e) => {
         return;
     }
     try {
-        const registerRequest = await fetch('http://localhost:3000/register',{
+        const registerRequest = await fetch('/register',{
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -114,8 +114,9 @@ document.getElementById('change-password-form').addEventListener('submit',async 
         return;
     }
     try {
-        const changePasssReq = await fetch('http://localhost:3000/new-password',{
+        const changePasssReq = await fetch('/new-password',{
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type':'application/json'
             },

@@ -89,10 +89,11 @@ const lastNameInput = document.getElementById('last-name');
 
 const editInfoBtn = document.getElementById('edit-info');
 const saveChangesBtn = document.getElementById('save-changes');
+const changePasswordBtn = document.getElementById('change-password');
 
 async function getUserDetails() {
     try{
-        const userDetailsResponse = await fetch("http://localhost:3000/user-details",{
+        const userDetailsResponse = await fetch("/user-details",{
             method: "GET",
             credentials: 'include',
         });
@@ -114,6 +115,8 @@ async function getUserDetails() {
 
 getUserDetails();
 
+changePasswordBtn.onclick = () => {window.open(`/users/${JSON.parse(Cookies.get('userInfo')).username}/changepassword`,'_self')}
+
 editInfoBtn.addEventListener('click',() => {
     document.querySelectorAll('input').forEach((input)=>{input.disabled=false; input.classList.add('not-disabled');});
     makingChanges = true;
@@ -123,7 +126,7 @@ editInfoBtn.addEventListener('click',() => {
 
 saveChangesBtn.addEventListener('click', async () => {
     try{
-        const userDetailsResponse = await fetch("http://localhost:3000/update-user-details",{
+        const userDetailsResponse = await fetch("/update-user-details",{
             method: "POST",
             credentials: 'include',
             headers: {
@@ -187,7 +190,7 @@ function createTitleHovers(listOfMediaCards){
 
 async function getWatchedMedia() {
     try {
-        const watchedMediaResponse = await fetch("http://localhost:3000/watched-media",{
+        const watchedMediaResponse = await fetch("/watched-media",{
             method: "Get",
             credentials: 'include',
         });
