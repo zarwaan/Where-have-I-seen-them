@@ -1,36 +1,38 @@
-.media-template{
+.media-template {
     margin-top: 0px;
 }
-.media-image{
+
+.media-image {
     width: 120px;
     height: 180px;
 }
-.media-title{
+
+.media-title {
     font-size: 16px;
 }
-.movies{
+
+.movies {
     gap: 20px;
 }
-.playlist-name{
+
+.playlist-name {
     margin: auto;
     margin-bottom: 20px;
     font-size: 35px;
     display: flex;
-    /* border: 2px solid white; */
     width: 92%;
     position: relative;
 }
-.playlist-btns{
+
+.playlist-btns {
     display: flex;
-    /* border: 2px solid green; */
     width: 20%;
     align-items: center;
     justify-content: flex-end;
     gap: 0.2rem;
-
 }
-.title{
-    /* border: 2px solid red; */
+
+.title {
     width: 80%;
     padding: 0px;
     text-align: left;
@@ -38,70 +40,81 @@
     outline: none;
     background-color: transparent;
     color: rgb(202, 202, 202);
-    /* border-bottom-color: rgb(202, 202, 202); */
-    /* border-bottom-width: 2px; */
-    /* border-bottom-style: solid; */
     transition: border 1s ease-in;
     border-radius: 0px;
     height: 100%;
     padding-bottom: 3px;
     z-index: 99;
 }
-.playlist-btns button:not(#save-name-changes,#delete-selection,#exit-selection){
+
+.playlist-btns button:not(#save-name-changes, #delete-selection, #exit-selection) {
     color: rgb(202, 202, 202) !important;
     font-size: 22px;
     background: transparent;
     border: none;
     outline: none;
-    /* border: 1px solid white; */
 }
-.playlist-btns button .bi-check2-square{
+
+.playlist-btns button .bi-check2-square {
     font-size: 25px;
 }
-.before-title{
+
+.before-title {
     position: absolute;
     height: 100%;
     width: 0;
     border-bottom: 2px solid rgb(202, 202, 202);
     transition: width 0.5s ease-in;
 }
-.editable-name{
+
+.editable-name {
     width: 80%;
 }
-.not-editable-name{
+
+.not-editable-name {
     width: 0;
 }
-#save-name-changes,#exit-selection{
+
+#save-name-changes,
+#exit-selection {
     background-color: rgb(202, 202, 202);
     color: black;
 }
-#delete-selection{
+
+#delete-selection {
     margin-right: 10px;
 }
-#save-name-changes:hover{
+
+#save-name-changes:hover {
     background-color: rgb(167, 167, 167);
 }
-.modal-content{
+
+.modal-content {
     color: black;
 }
-.overlay{
+
+.overlay {
     position: relative;
 }
-.overlay::before{
+
+.overlay::before {
     content: '';
     height: 100%;
     width: 100%;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     position: absolute;
     z-index: 99;
 }
-.unselected{
+
+.unselected {
     filter: brightness(0.2);
 }
-.selected{
+
+.selected {
     filter: brightness(1);
 }
-.error-message{
+
+.error-message {
     margin-bottom: 20px;
     font-size: 18px;
 }

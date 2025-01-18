@@ -1,10 +1,10 @@
-input{
+input {
     width: 300px;
     height: 40px;
     padding-left: 5px;
 }
-.forms-cont{
-    /* border: 2px solid white; */
+
+.forms-cont {
     display: flex;
     flex-wrap: wrap;
     width: 850px;
@@ -12,42 +12,52 @@ input{
     gap: 25px;
     margin-top: 1%;
 }
-.div-with-list{
-    /* border: 2px solid green; */
+
+.div-with-list {
     margin: 0px;
 }
-.add-more-inputs, .remove-inputs{
-    /* border: 2px solid red; */
+
+.add-more-inputs,
+.remove-inputs {
     width: fit-content;
     height: 40px;
     align-self: center;
     margin: 0px;
 }
-.bi-plus-circle, .bi-dash-circle{
+
+.bi-plus-circle,
+.bi-dash-circle {
     font-size: 18px;
     color: rgb(202, 202, 202);
 }
-#search-form-1,#search-form-2,#search-form-3,#search-form-4
-{
-    /* border: 2px solid red; */
+
+#search-form-1,
+#search-form-2,
+#search-form-3,
+#search-form-4 {
     display: inline-flex;
     gap: 0px;
 }
-.hidden{
+
+.hidden {
     display: none !important;
 }
-#search-btn{
+
+#search-btn {
     margin-top: 1%;
 }
-#know-them-from{
+
+#know-them-from {
     font-size: 30px;
     margin-top: 1%;
 }
-.modal-body{
+
+.modal-body {
     border-bottom: 1px solid #dee2e6;
     font-size: 20px;
 }
-.last-modal-body{
+
+.last-modal-body {
     border-bottom: none;
     font-weight: 700;
     font-size: 25px;

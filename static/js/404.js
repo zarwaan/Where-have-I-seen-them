@@ -1,1 +1,0 @@
-// document.querySelector(".img-cont img").src = "../"

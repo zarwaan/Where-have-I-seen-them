@@ -1,7 +1,6 @@
-.toggle-button{
+.toggle-button {
     background-color: rgb(55, 55, 55);
     color: white;
-    /* border: 1px solid black; */
     border: none;
     width: 13rem;
     padding: 3%;
@@ -10,30 +9,28 @@
     font-size: 16px;
     border-radius: 10px;
     font-weight: 600;
-} 
-.page-toggle-button{
+}
+
+.page-toggle-button {
     background-color: rgb(55, 55, 55);
     color: white;
-    /* border: 1px solid black; */
     border: none;
-    /* padding: 3%;
-    padding-left: 7%;
-    padding-right: 7%; */
     border-radius: 10px;
     font-weight: 600;
     width: 35px;
     font-size: 22px;
 }
-.page-toggle-cont{
+
+.page-toggle-cont {
     display: flex;
     width: fit-content;
     margin: auto;
-    /* gap:10px; */
     margin-bottom: 1%;
     background-color: rgb(55, 55, 55);
     border-radius: 10px;
     margin-top: 1.2rem;
 }
-.selected-button{
+
+.selected-button {
     background-color: gray;
 }

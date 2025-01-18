@@ -1,19 +1,10 @@
 #search-form {
     position: relative;
-    /* width: fit-content; */
-    /* margin-top: 30px; */
-    /* border: 2px solid blue; */
-    /* border: 0.5px solid red; */
-    /* width: 50%; */
     align-content: center;
-    /* flex-grow: 1;
-    min-width: 300px;
-    max-width: 40%; */
 }
 
 input[type=text] {
     width: 400px;
-    /* border: 0.5px solid blue; */
     margin-bottom: 0px;
     border-radius: 15px;
     border-width: 1.5px;
@@ -22,45 +13,37 @@ input[type=text] {
     padding-left: 5px;
     padding-right: 5px;
 }
-input[type=text]:focus{
+
+input[type=text]:focus {
     border: none !important;
     box-shadow: none;
     outline: none;
 }
-.div-with-list{
+
+.div-with-list {
     display: flex;
     gap: 10px;
     margin: auto;
-    /* border: 2px solid red; */
     width: fit-content;
     position: relative;
 }
 
 .option-list {
-    position: absolute; 
-    top: calc(100% + 4px); 
-    /* left: 1px;  */
-    width: 400px; 
-    /* background-color: white;  */
-    z-index: 999; 
+    position: absolute;
+    top: calc(100% + 4px);
+    width: 400px;
+    z-index: 999;
     margin-top: 0;
-    /* border: 0.5px solid green; */
-    /* gap: 5px;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-bottom: 1%; */
-    /* background-color: rgb(224, 224, 224); */
     display: flex;
     flex-direction: column;
     gap: 4px;
     margin-top: 1px;
-    /* border: 2px solid green; */
 }
+
 .option {
     border: 1px solid black;
-    /* border-top: none; */
     padding: 8px;
-    cursor: pointer; 
+    cursor: pointer;
     display: inline-flex;
     width: 100%;
     border-radius: 12.5px;
@@ -68,99 +51,104 @@ input[type=text]:focus{
     font-size: 17px;
     font-weight: 600;
 }
+
 .option:hover {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
 }
-#search{
+
+#search {
     position: relative;
     z-index: 1000;
-    /* border: 0.5px solid blue; */
 }
-.option-image-div{
+
+.option-image-div {
     width: 20%;
-
-    /* width: 71px; 
-    height: 106.5px; */
-    /* border: 0.5px solid blue; */
-    /* margin: 0; */
 }
-.option-title-div{
-    width: 80%;
 
-    /* width: 211px; */
-    /* border: 0.5px solid blue; */
+.option-title-div {
+    width: 80%;
     display: flex;
     justify-content: center;
-    align-items:center;
-    /* margin: auto; */
+    align-items: center;
 }
-.option-image{
+
+.option-image {
     width: 100%;
     height: 100%;
     aspect-ratio: 3/4.5;
     border-radius: 10px;
     border: 2px solid grey;
 }
-#error-message{
-margin: auto; margin-top: 2%; background-color: lightpink; width: fit-content; padding: 1%;
-border-radius: 5px;
+
+#error-message {
+    margin: auto;
+    margin-top: 2%;
+    background-color: lightpink;
+    width: fit-content;
+    padding: 1%;
+    border-radius: 5px;
 }
-.main-content{
+
+.main-content {
     width: 80%;
     margin: auto;
-    /* border: 2px solid black; */
     display: flex;
     justify-content: center;
     color: rgb(224, 224, 224);
     flex-wrap: wrap;
     display: none;
     color: black;
-    /* gap: 10px; */
 }
-.image-cont{
+
+.image-cont {
     width: 30%;
     align-content: center;
 }
-.info-cont{
+
+.info-cont {
     width: 70%;
     padding-left: 3%;
     padding-right: 2%;
     text-align: left;
-    /* border: 2px solid white; */
 }
-#media-image{
+
+#media-image {
     width: 100%;
     padding: 0%;
     border: 0.5px solid #f0f0f0;
     border-radius: 10px;
 }
-.info-cont div:not(.watch-cont){
+
+.info-cont div:not(.watch-cont) {
     width: fit-content;
-    /* border: 1px solid green; */
     text-align: left;
     font-size: larger;
 }
-.info-cont div:not(:last-child){
+
+.info-cont div:not(:last-child) {
     margin-bottom: 1.3%;
 }
-#media-title{
+
+#media-title {
     font-size: 60px;
     font-weight: bolder;
     margin-bottom: 0;
 }
-#media-tagline{
+
+#media-tagline {
     font-style: italic;
 }
-.media-metadata{
+
+.media-metadata {
     display: flex;
     gap: 0.8rem;
 }
-.media-label{
+
+.media-label {
     font-weight: bold;
 }
 
-.watch-status-div{
-    /* border: 2px solid black; */
+.watch-status-div {
     display: flex;
     gap: 13px;
     padding: 1.2%;
@@ -169,46 +157,53 @@ border-radius: 5px;
     padding-right: 2%;
     width: 100%;
 }
-.watch-status-info{
-    /* border: 2px solid blue; */
+
+.watch-status-info {
     font-weight: 700;
     align-content: center;
     margin-bottom: 0.4%;
     color: black;
 }
-#unwatched-btn{
+
+#unwatched-btn {
     background-color: var(--bs-danger);
     color: white;
 }
-#unwatched-btn:hover{
+
+#unwatched-btn:hover {
     background-color: rgb(160, 0, 0);
 }
-#watched-btn{
+
+#watched-btn {
     background-color: var(--bs-success);
     color: white;
 }
-#watched-btn:hover{
+
+#watched-btn:hover {
     background-color: rgb(21, 114, 21);
 }
-.unwatched{
+
+.unwatched {
     background-color: rgb(255, 181, 181);
 }
-.watched{
+
+.watched {
     background-color: rgb(181, 255, 181);
 }
-.watch-status-div button{
+
+.watch-status-div button {
     font-weight: 500;
 }
+
 #result {
     position: relative;
-    /* border: 1px solid green; */
     padding: 1%;
-    background: none; /* Remove default background */
-    z-index: 1; /* Ensure content appears above the background */
-    /* width: 95%; */
+    background: none;
+    z-index: 1;
     margin: auto;
     margin-top: 1%;
 }
+
 body::before {
     content: '';
     position: fixed;
@@ -216,20 +211,16 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    /* background-image: var(--image,#F8F8FF); */
-    background-image: var(--image,url('../images/collage.jpg'));
-    /* background-image: url("../images/wlbg.png"); */
-    /* background-image: white; */
+    background-image: var(--image, url('../images/collage.jpg'));
     background-position: center;
-    /* background-size: cover; */
-    filter: brightness(var(--brightness,12%)); /* Apply blur here */
-    z-index: -1; /* Send background behind the content */
-    pointer-events: none; /* Ensure it doesn’t interfere with clicks */
+    filter: brightness(var(--brightness, 12%));
+    z-index: -1;
+    pointer-events: none;
     background-size: cover;
 }
-.cast-list-div{
+
+.cast-list-div {
     order: 1;
-    /* border: 2px solid white; */
     margin-top: 1%;
     display: flex;
     overflow: scroll;
@@ -238,154 +229,132 @@ body::before {
     color: black;
     scroll-margin: 2%;
 }
-.cast-card{
-    /* border: 2px solid blue; */
+
+.cast-card {
     padding: 0.7%;
     background-color: lightgray;
     border-radius: 15px;
     margin-bottom: 2%;
-    /* width: 110px; */
     cursor: pointer;
-    /* overflow: hidden; */
-    /* transition: border 0.3s ease-in-out; */
 }
-.cast-card:hover .cast-info .actor-name{
+
+.cast-card:hover .cast-info .actor-name {
     text-decoration-line: underline;
 }
-/* .cast-card:hover{
-    box-shadow: 0 0 20px darkgrey;
-} */
-.cast-info{
+
+.cast-info {
     width: 100px;
     margin: auto;
     margin-top: .3rem;
-    /* display: flex;
-    flex-wrap: wrap;
-    overflow-wrap:normal; */
 }
-.profile-image{
+
+.profile-image {
     width: 130px;
     border-radius: 10px;
     box-shadow: 4px 4px 3px #888;
 }
-.actor-name, .character-name{
+
+.actor-name,
+.character-name {
     font-weight: bold;
 }
-/* .actor-name{
-    position: relative;
-}
-.actor-name::after{
-    content: ''; 
-    position: absolute;
-    left: 0;
-    bottom: 0; 
-    height: 2px; 
-    width: 0; 
-    background-color: currentColor; 
-    transition: width 0.3s ease-in; 
-    transform-origin: left center;
-}
-.cast-card:hover .cast-info .actor-name::after{
-    width: 100%;
-} */
-/* .actor-name{
-    color: black;
-    text-decoration: none;
-}
-.actor-name:hover{
-    color: grey;
-} */
-.cast-list-header{
+
+.cast-list-header {
     width: 100%;
     text-align: left;
     margin-top: 1%;
     font-weight: bolder;
     font-size: 40px;
 }
-body{
+
+body {
     background-color: #F8F8FF;
 }
+
 .cast-list-div::-webkit-scrollbar {
-    width: 0px; /* Width of vertical scrollbar */
-    height: 8px; /* Height of horizontal scrollbar */
+    width: 0px;
+    height: 8px;
 }
 
 .cast-list-div::-webkit-scrollbar-track {
-    background: transparent; /* Track background color */
-    border-radius: 10px; /* Rounded track edges */
+    background: transparent;
+    border-radius: 10px;
 }
 
 .cast-list-div::-webkit-scrollbar-thumb {
-    background: #888; /* Thumb (scrollbar handle) color */
-    border-radius: 10px; /* Rounded thumb edges */
+    background: #888;
+    border-radius: 10px;
 }
 
 .cast-list-div::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Darker thumb on hover */
+    background: #555;
 }
-.watch-cont{
+
+.watch-cont {
     text-align: left;
     width: 70%;
     margin-top: 3%;
 }
-body{
+
+body {
     background-color: black;
 }
-.spinner-border{
+
+.spinner-border {
     width: 2.5rem;
     height: 2.5rem;
     margin-top: 3%;
 }
-.hidden-spinner{
+
+.hidden-spinner {
     display: none;
 }
-.not-allowed{
+
+.not-allowed {
     cursor: not-allowed !important;
 }
-.not-signed-in-tooltip{
+
+.not-signed-in-tooltip {
     --bs-tooltip-bg: rgb(104, 0, 0);
     --bs-tooltip-opacity: 1;
     font-size: 20px;
     --bs-tooltip-max-width: 300px;
     --bs-ttoltip-arrow-width: 10px;
 }
-.func-buttons{
+
+.func-buttons {
     display: flex;
-    /* align-items: center; */
-    /* border: 2px solid white; */
     width: 100% !important;
     align-items: baseline;
     flex-wrap: wrap;
 }
-.add-to-playlist-button{
-    /* width: 30%; */
+
+.add-to-playlist-button {
     display: flex;
-    /* align-self: center; */
     font-size: 20px;
     font-weight: 600;
-    /* color: white; */
     gap: 5px;
     align-items: stretch;
     flex-direction: row-reverse;
 }
-.add-to-playlist-button i{
+
+.add-to-playlist-button i {
     margin: 0;
     padding: 0;
     line-height: 50%;
-    /* border: 1px solid white; */
-    /* display: flex; */
-    /* align-content: baseline; */
 }
-.add-to-playlist-button i::before{
+
+.add-to-playlist-button i::before {
     margin: 0;
-    /* border: 1px solid blue; */
     line-height: 100%;
     margin-top: 7px;
 }
-.sel-play-mod-body{
+
+.sel-play-mod-body {
     max-height: 530px;
 }
-.select-playlist{
+
+.select-playlist {
     position: absolute;
     z-index: 1002;
     background-color: white;
@@ -397,7 +366,8 @@ body{
     height: 0.2%;
     overflow: hidden;
 }
-#playlist-list{
+
+#playlist-list {
     display: flex;
     flex-direction: column;
     accent-color: black;
@@ -405,16 +375,19 @@ body{
     font-weight: 500;
     text-align: left;
 }
-.playlists{
+
+.playlists {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-#playlist-list .playlist input{
+
+#playlist-list .playlist input {
     width: 16px;
     height: 16px;
     border-width: 10px;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
