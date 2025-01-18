@@ -6,9 +6,6 @@ export function createProfileLink() {
     link.style.paddingBottom = '2px';
     if (Cookies.get('userInfo')) {
         const user = JSON.parse(Cookies.get('userInfo'));
-        console.log(user.username);
-        console.log(user.user_id);
-
         document.querySelector('i.bi').classList.add('bi-person-fill');
         link.href = `/users/${user.username}`;
         link.textContent = user.username;

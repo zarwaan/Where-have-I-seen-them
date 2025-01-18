@@ -1,1 +1,1 @@
-document.querySelector('.f404-text span').innerHTML = `I'm sorry ${JSON.parse(Cookies.get('userInfo')).username} , I am afraid I can't do that`
+document.querySelector('.f404-text span').innerHTML = `I'm sorry ${Cookies.get('userInfo') ? JSON.parse(Cookies.get('userInfo')).username : 'user'} , I am afraid I can't do that`

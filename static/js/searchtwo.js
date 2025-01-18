@@ -4,44 +4,39 @@ import { createList } from "./hardCodedOptionList.js";
 import * as pagination from './pagination.js';
 
 createProfileLink();
-// document.querySelector('.btn-primary').click();
-// createList();
 const auth = await getApiKey();
 const MY_API_KEY = auth["api-key"];
 const MY_BEARER_TOKEN = auth["bearer-token"];
 const errorMessageDiv = document.getElementById('error-message');
 let actorDebouceTimeout;
-let actorsCredits=[];
+let actorsCredits = [];
 let watchedMediaList = [];
 let listOfMediaCards = [], listOfWatchedMediaCards = [];
 let pages = [], watchedPages = [];
 let movieCount = 0, tvCount = 0;
 
-function setErrorMessage(errorText){
+function setErrorMessage(errorText) {
     errorMessageDiv.innerHTML = errorText;
     errorMessageDiv.classList.remove('hidden');
     document.querySelector('.spinner-border').remove();
 }
 
-function removeErrorMessage() {errorMessageDiv.classList.add('hidden');}
+function removeErrorMessage() { errorMessageDiv.classList.add('hidden'); }
 removeErrorMessage();
 
-document.querySelector('.app-name').addEventListener('click',() => window.open('/',"_self"));
+document.querySelector('.app-name').addEventListener('click', () => window.open('/', "_self"));
 
 const params = new URLSearchParams(window.location.search);
 
-if(params.size===0) document.querySelector('.spinner-border').remove();
+if (params.size === 0) document.querySelector('.spinner-border').remove();
 
 const actorNamesUrl = params.get('actorNames')?.split('_');
 const actorIdsUrl = params.get('actorIds')?.split('_');
 
-if(actorNamesUrl)
-document.title = actorNamesUrl.join(', ');
+if (actorNamesUrl)
+    document.title = actorNamesUrl.join(', ');
 
-console.log(actorNamesUrl);
-console.log(actorIdsUrl);
-
-if(actorIdsUrl) main();
+if (actorIdsUrl) main();
 
 let numberOfInputs = 1;
 const formCont = document.querySelector('.forms-cont');
@@ -49,19 +44,16 @@ const watchedMediaButton = document.getElementById('watched-media-button');
 const allMediaButton = document.getElementById('all-media-button');
 const modal = document.getElementById('exampleModal');
 
-modal.addEventListener('show.bs.modal',async function(event){
+modal.addEventListener('show.bs.modal', async function (event) {
     const trigger = event.relatedTarget;
     const media = trigger.getAttribute('data-whist-media');
     const idOfMedia = trigger.getAttribute('data-whist-media-id');
     const typeOfMedia = trigger.getAttribute('data-whist-media-type');
-    console.log('clicked')
 
-    await fillCharacters(idOfMedia,typeOfMedia,media);
-    // console.log(document.querySelector('.modal-content'));
-
+    await fillCharacters(idOfMedia, typeOfMedia, media);
 });
 
-function addInput(name=null,id=null){
+function addInput(name = null, id = null) {
     numberOfInputs++;
     const inputBox = document.createElement('div');
     inputBox.id = `search-form-${numberOfInputs}`;
@@ -71,120 +63,119 @@ function addInput(name=null,id=null){
     divWithList.id = `actor-list-cont-${numberOfInputs}`;
 
     const actorInput = document.createElement('input');
-    actorInput.setAttribute('type','text');
+    actorInput.setAttribute('type', 'text');
     actorInput.id = `actor-input-${numberOfInputs}`;
-    actorInput.setAttribute('placeholder',`Actor name`);
-    actorInput.setAttribute('autocomplete','off');
+    actorInput.setAttribute('placeholder', `Actor name`);
+    actorInput.setAttribute('autocomplete', 'off');
 
-    if(name){
+    if (name) {
         actorInput.value = name;
-        actorInput.setAttribute('data-whist-actor-id',id);
+        actorInput.setAttribute('data-whist-actor-id', id);
     }
 
-    actorInput.addEventListener('input',()=>{
+    actorInput.addEventListener('input', () => {
         clearTimeout(actorDebouceTimeout);
-        actorDebouceTimeout = setTimeout(()=>showActorOptions(actorInput.value,actorInput,divWithList),100); 
+        actorDebouceTimeout = setTimeout(() => showActorOptions(actorInput.value, actorInput, divWithList), 100);
     });
 
     const addInputButton = document.createElement('button');
     addInputButton.classList.add('btn', 'add-more-inputs');
-    
+
     const addInputIcon = document.createElement('i');
     addInputIcon.classList.add('bi', 'bi-plus-circle');
 
-    addInputButton.addEventListener('click',()=>{
-        if(numberOfInputs<4){
+    addInputButton.addEventListener('click', () => {
+        if (numberOfInputs < 4) {
             addInput()
         }
     });
 
     const removeInputButton = document.createElement('button');
     removeInputButton.classList.add('btn', 'remove-inputs');
-    
+
     const removeInputIcon = document.createElement('i');
     removeInputIcon.classList.add('bi', 'bi-dash-circle');
 
-    removeInputButton.addEventListener('click',()=>{
-        if(numberOfInputs>1)
+    removeInputButton.addEventListener('click', () => {
+        if (numberOfInputs > 1)
             removeInput(inputBox)
     });
 
     addInputButton.append(addInputIcon);
     removeInputButton.append(removeInputIcon);
     divWithList.append(actorInput);
-    inputBox.append(removeInputButton,divWithList,addInputButton);
+    inputBox.append(removeInputButton, divWithList, addInputButton);
 
     formCont.append(inputBox);
 }
 
-function removeInput(element){
+function removeInput(element) {
     element.remove();
     numberOfInputs--;
 }
 
-document.querySelector('.add-more-inputs').addEventListener('click',()=>{
-    if(numberOfInputs<4){
+document.querySelector('.add-more-inputs').addEventListener('click', () => {
+    if (numberOfInputs < 4) {
         addInput()
     }
 });
 
-document.querySelector('.remove-inputs').addEventListener('click',()=>{
-    if(numberOfInputs>1)
+document.querySelector('.remove-inputs').addEventListener('click', () => {
+    if (numberOfInputs > 1)
         removeInput(document.querySelector('#search-form-1'));
 });
 
-document.querySelector('#actor-input-1').addEventListener('input',()=>{
+document.querySelector('#actor-input-1').addEventListener('input', () => {
     clearTimeout(actorDebouceTimeout);
-    actorDebouceTimeout = setTimeout(()=>
-    showActorOptions(
-document.querySelector('#actor-input-1').value,
-document.querySelector('#actor-input-1'),
-document.querySelector('#actor-list-cont-1'),
-    ),100);
+    actorDebouceTimeout = setTimeout(() =>
+        showActorOptions(
+            document.querySelector('#actor-input-1').value,
+            document.querySelector('#actor-input-1'),
+            document.querySelector('#actor-list-cont-1'),
+        ), 100);
 });
 
-if(actorIdsUrl)
-    for(let i=0;i<actorIdsUrl.length;i++){
-        if(i===0){
+if (actorIdsUrl)
+    for (let i = 0; i < actorIdsUrl.length; i++) {
+        if (i === 0) {
             document.querySelector('#actor-input-1').value = actorNamesUrl[i];
-            document.querySelector('#actor-input-1').setAttribute('data-whist-actor-id',actorIdsUrl[i]);
+            document.querySelector('#actor-input-1').setAttribute('data-whist-actor-id', actorIdsUrl[i]);
         }
-        else{
-            addInput(actorNamesUrl[i],actorIdsUrl[i]);
+        else {
+            addInput(actorNamesUrl[i], actorIdsUrl[i]);
         }
     }
 
-document.getElementById('search-btn').addEventListener('click',()=>{
+document.getElementById('search-btn').addEventListener('click', () => {
     const inputs = Array.from(document.querySelectorAll('input')).map(input => {
-        if(!input.value) return null
-        if(!input.getAttribute('data-whist-actor-id')) return -1
-        return { name: input.value, id:input.getAttribute('data-whist-actor-id')}
+        if (!input.value) return null
+        if (!input.getAttribute('data-whist-actor-id')) return -1
+        return { name: input.value, id: input.getAttribute('data-whist-actor-id') }
     });
 
-    if(inputs.includes(null)){
+    if (inputs.includes(null)) {
         setErrorMessage("Please fill all names!");
         return;
     }
-    if(inputs.includes(-1)){
+    if (inputs.includes(-1)) {
         setErrorMessage("Please select an actor from the list only!");
         return;
     }
-    for(let i=0;i<inputs.length;i++){
-        for(let j=i+1;j<inputs.length;j++){
-            if(inputs[i].id === inputs[j].id && inputs[i].name === inputs[j].name){
+    for (let i = 0; i < inputs.length; i++) {
+        for (let j = i + 1; j < inputs.length; j++) {
+            if (inputs[i].id === inputs[j].id && inputs[i].name === inputs[j].name) {
                 setErrorMessage("Please enter distinct actors!");
                 return;
             }
         }
     }
 
-    const actorNames = inputs.map(input=>{return input.name}).join('_');
-    const actorIds = inputs.map(input=>{return input.id}).join('_');
-    // console.log(actorNames,actorIds);
-    window.open(`/actor-group?actorNames=${encodeURIComponent(actorNames)}&actorIds=${encodeURIComponent(actorIds)}`,'_self');
+    const actorNames = inputs.map(input => { return input.name }).join('_');
+    const actorIds = inputs.map(input => { return input.id }).join('_');
+    window.open(`/actor-group?actorNames=${encodeURIComponent(actorNames)}&actorIds=${encodeURIComponent(actorIds)}`, '_self');
 });
 
-watchedMediaButton.addEventListener('click',function(){
+watchedMediaButton.addEventListener('click', function () {
     clearMediaToggle();
     watchedMediaButton.classList.add('selected-button');
     document.getElementById('result').classList.add('hidden-result');
@@ -193,7 +184,7 @@ watchedMediaButton.addEventListener('click',function(){
     document.querySelector('.watched-toggle-button-cont').classList.remove('hidden-result');
 });
 
-allMediaButton.addEventListener('click',function(){
+allMediaButton.addEventListener('click', function () {
     clearMediaToggle();
     allMediaButton.classList.add('selected-button');
     document.getElementById('result').classList.remove('hidden-result');
@@ -202,39 +193,30 @@ allMediaButton.addEventListener('click',function(){
     document.querySelector('.watched-toggle-button-cont').classList.add('hidden-result');
 });
 
-function clearMediaToggle(){
+function clearMediaToggle() {
     document.querySelectorAll('.media-toggle-button').forEach((button) => {
         button.classList.remove('selected-button');
     });
 }
 
-async function showActorOptions(query,inputElement,listContElement){
-
+async function showActorOptions(query, inputElement, listContElement) {
     var oldList = document.querySelectorAll(`.option-list`);
-    // console.log(oldList);
-    if(oldList.length !== 0) oldList.forEach((list) => {
-        list.setAttribute('data-whist-list-age','old');
+    if (oldList.length !== 0) oldList.forEach((list) => {
+        list.setAttribute('data-whist-list-age', 'old');
     });
-    // clearAllLists();
-
     var optionList = document.createElement('div');
     optionList.classList.add('option-list');
     optionList.classList.add('actor-option-list');
-    optionList.setAttribute('data-whist-list-age','new');
+    optionList.setAttribute('data-whist-list-age', 'new');
 
     try {
-        // const auth = await getApiKey()
-        // const MY_API_KEY = await auth["api-key"];
-        // const MY_BEARER_TOKEN = await auth["bearer-token"];
-
         const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${query}&api_key=${MY_API_KEY}`);
         const result = await response.json();
 
         var actorOptions = [];
         var optionResults = result['results'];
-        var sortedActorOptionResults = optionResults.sort((a,b) => b['popularity'] - a['popularity']);
-        for(let i=0;i<Math.min(5, sortedActorOptionResults.length);i++)
-        {
+        var sortedActorOptionResults = optionResults.sort((a, b) => b['popularity'] - a['popularity']);
+        for (let i = 0; i < Math.min(5, sortedActorOptionResults.length); i++) {
             actorOptions.push(sortedActorOptionResults[i]['name'] || sortedActorOptionResults[i]['original_name'])
             const actorName = sortedActorOptionResults[i]['name'] || sortedActorOptionResults[i]['original_name'];
             const actorId = sortedActorOptionResults[i]['id'];
@@ -250,116 +232,88 @@ async function showActorOptions(query,inputElement,listContElement){
 
             var optionImage = document.createElement('img');
             optionImage.classList.add('option-image');
-            optionImage.src = sortedActorOptionResults[i]['profile_path'] ? `https://image.tmdb.org/t/p/w300/${sortedActorOptionResults[i]['profile_path']}`:`../static/images/no_image.jpg`;
+            optionImage.src = sortedActorOptionResults[i]['profile_path'] ? `https://image.tmdb.org/t/p/w300/${sortedActorOptionResults[i]['profile_path']}` : `../static/images/no_image.jpg`;
 
-            // const posterPath = sortedOptionResults[i]['poster_path'] ? `https://image.tmdb.org/t/p/w300/${sortedOptionResults[i]['poster_path']}`:`../static/images/no_image.jpg`
-            
             optionTitleDiv.textContent = `${sortedActorOptionResults[i]['name'] || sortedActorOptionResults[i]['original_name']}`;
-            
-            // const onlyTitle = `${sortedOptionResults[i]['name'] || sortedOptionResults[i]['title']}`
-            // optionTitleDiv.textContent += sortedOptionResults[i]['release_date'] ? ` (${sortedOptionResults[i]['release_date'].substring(0,4)})` : " (?)";
 
             optionImageDiv.append(optionImage);
             option.append(optionImageDiv);
             option.append(optionTitleDiv);
-            // option.textContent = `${result['results'][i]['name'] || result['results'][i]['title']}`;
-            
-            option.addEventListener('click',() =>{
+
+            option.addEventListener('click', () => {
                 inputElement.value = actorName;
-                inputElement.setAttribute('data-whist-actor-id',actorId);
-                // optionList.remove();
+                inputElement.setAttribute('data-whist-actor-id', actorId);
                 clearAllLists();
             });
-            // selectThisActorOption(actorName,actorId));
 
             optionList.append(option);
         }
-
-        // inputDiv.append(optionList);
-        // console.log(actorOptions);
         clearOldLists();
-        // return optionList;
         listContElement.append(optionList);
     } catch (error) {
-        console.error("there has been an error: ",error);
     }
-    // console.log(query);
 }
 
-function clearOldLists(){
+function clearOldLists() {
     var oldList = document.querySelectorAll(`div[data-whist-list-age=old]`)
-    // console.log(oldList);
-    if(oldList.length !== 0) oldList.forEach((list) => {
+    if (oldList.length !== 0) oldList.forEach((list) => {
         list.remove();
     });
 }
 
-function clearAllLists(){
+function clearAllLists() {
     var lists = document.querySelectorAll(`.option-list`)
-    // console.log(oldList);
-    if(lists.length !== 0) lists.forEach((list) => {
+    if (lists.length !== 0) lists.forEach((list) => {
         list.remove();
     });
 }
 
-async function getActorCredits(actorId){
+async function getActorCredits(actorId) {
     let oneActorCredits = [];
     try {
         const actorMoviesResponse = await fetch(`https://api.themoviedb.org/3/person/${actorId}/combined_credits?api_key=${MY_API_KEY}`);
         const actorMoviesResult = await actorMoviesResponse.json();
         const mediaList = actorMoviesResult['cast'];
-        const sortedMediaList = mediaList.sort((a,b) => b['vote_count'] - a['vote_count']);
-        oneActorCredits = sortedMediaList.map(media=>{
-            // return {
-            //     media_id: media['id'],
-            //     media_type: media['media_type']
-            // }
-            if(
-                (media['title'] || media['name']) && 
-                    (media['character'] !== "Self" && media['character'] && 
-                    media['character'] !== "Self - Guest" && 
+        const sortedMediaList = mediaList.sort((a, b) => b['vote_count'] - a['vote_count']);
+        oneActorCredits = sortedMediaList.map(media => {
+            if (
+                (media['title'] || media['name']) &&
+                (media['character'] !== "Self" && media['character'] &&
+                    media['character'] !== "Self - Guest" &&
                     media['character'] !== "Self - Host" &&
                     media['character'].toLowerCase() !== "himself" &&
                     media['character'].toLowerCase() !== "herself" &&
                     (!media['genre_ids'].includes(10764)) &&
                     (!media['genre_ids'].includes(10767))
-            ))
+                ))
                 return `${media['id']},${media['media_type']}`;
             else
                 return null
         });
         actorsCredits.push(new Set(oneActorCredits));
     } catch (error) {
-        console.log("Error fetching credits: ",error);
         setErrorMessage("Error fetching credits");
     }
 }
 
 async function getWatchedMedia() {
     try {
-        const watchedMediaResponse = await fetch("/watched-media",{
+        const watchedMediaResponse = await fetch("/watched-media", {
             method: "Get",
             credentials: 'include',
         });
         const watchedMediaResult = await watchedMediaResponse.json();
-        if(watchedMediaResponse.ok){
-            // console.log(watchedMediaResult);
+        if (watchedMediaResponse.ok) {
             watchedMediaList = watchedMediaResult['media'];
-            // console.log(watchedMediaList);
         }
-        else{
-            console.log(watchedMediaResult);
+        else {
         }
     } catch (error) {
-        console.error("server error: ",error);
         setErrorMessage("Server Error");
     }
 }
 
-async function createMediaCards(id,type,index){
-    // console.log(typeof id,typeof type);
-    if((movieCount+tvCount+1)%50 === 0)
-        setTimeout(()=>{},1500);
+async function createMediaCards(id, type, index) {
     try {
         const mediaResponse = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${MY_API_KEY}`);
         const mediaResult = await mediaResponse.json();
@@ -367,128 +321,112 @@ async function createMediaCards(id,type,index){
         const title = mediaResult['name'] || mediaResult['title'];
         const posterPath = mediaResult['poster_path'] ? `https://image.tmdb.org/t/p/original/${mediaResult['poster_path']}` : "../static/images/no_image.jpg";
 
-        if(type==='movie') movieCount++;
-        if(type==='tv') tvCount++;
+        if (type === 'movie') movieCount++;
+        if (type === 'tv') tvCount++;
         const mediaCard = document.createElement('div');
         mediaCard.classList.add('media-template');
         const attributes = {
-            "data-bs-toggle":"modal", 
-            "data-bs-target":"#exampleModal", 
-            "data-whist-media":`${title}`, 
-            "data-whist-media-id":`${id}`,
-            "data-whist-media-type":`${type}`
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            "data-whist-media": `${title}`,
+            "data-whist-media-id": `${id}`,
+            "data-whist-media-type": `${type}`
         }
         Object.entries(attributes).forEach(([key, value]) => mediaCard.setAttribute(key, value));
 
         var mediaImage = document.createElement('img');
         mediaImage.src = posterPath;
-        // if(!mediaResult['poster_path'])
-        // {
-        //     mediaImage.classList.add('no-media-image');    
-        // }
-        // else    
-        //     mediaImage.classList.add('media-image');
         mediaImage.classList.add(mediaResult['poster_path'] ? 'media-image' : 'no-media-image');
-        mediaImage.setAttribute('loading','lazy');
+        mediaImage.setAttribute('loading', 'lazy');
 
         var mediaTitle = document.createElement('div');
         mediaTitle.classList.add('media-title');
         mediaTitle.textContent = `${title}`;
 
-        mediaCard.append(mediaImage,mediaTitle);
+        mediaCard.append(mediaImage, mediaTitle);
         listOfMediaCards[index] = mediaCard;
-        // listOfMediaCards.push(mediaCard);
 
-        if(
+        if (
             watchedMediaList.some(media => media.media_id === parseInt(id) &&
-                                    media.media_type === (type==='movie'?1:2)
+                media.media_type === (type === 'movie' ? 1 : 2)
             )
-        ){
-            // listOfWatchedMediaCards.push(mediaCard.cloneNode(true));
+        ) {
             listOfWatchedMediaCards[index] = mediaCard.cloneNode(true);
         }
     } catch (error) {
-        console.log("Error displaying movies: ",error);
         setErrorMessage("Error displaying movies");
     }
 }
 
-function fillWatchedPages(){
-    // listOfWatchedMediaCards.push()
-    if(listOfWatchedMediaCards.length===0){
+function fillWatchedPages() {
+    if (listOfWatchedMediaCards.length === 0) {
         const noMovies = document.createElement('div');
         noMovies.classList.add('no-watched-movies');
         if (Cookies.get('userInfo')) {
             noMovies.textContent = 'You have not seen any of their movies or TV shows!';
         }
-        else{
+        else {
             noMovies.innerHTML = "You need to be signed in to access media seen by you!<br/>Please see 'all media'";
         }
         document.querySelector('.watched-result').append(noMovies);
         return;
     }
-    pagination.segregatePages(listOfWatchedMediaCards,watchedPages,40);
+    pagination.segregatePages(listOfWatchedMediaCards, watchedPages, 40);
     pagination.addToggleButtons(document.querySelector('.watched-toggle-button-cont'),
-                                watchedPages,
-                                document.getElementById('know-them-from'),
-                                document.querySelector('.watched-result'));
-    pagination.displayPage(1,watchedPages,document.querySelector('.watched-result'));
+        watchedPages,
+        document.getElementById('know-them-from'),
+        document.querySelector('.watched-result'));
+    pagination.displayPage(1, watchedPages, document.querySelector('.watched-result'));
 }
 
-function fillAllPages(){
-    pagination.segregatePages(listOfMediaCards,pages,40);
+function fillAllPages() {
+    pagination.segregatePages(listOfMediaCards, pages, 40);
     pagination.addToggleButtons(document.querySelector('.all-toggle-buttons-cont'),
-                                pages,
-                                document.getElementById('know-them-from'),
-                                document.getElementById('result'));
-    pagination.displayPage(1,pages,document.getElementById('result'));
+        pages,
+        document.getElementById('know-them-from'),
+        document.getElementById('result'));
+    pagination.displayPage(1, pages, document.getElementById('result'));
+}
+
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve,ms));
 }
 
 async function main() {
-    await Promise.all(actorIdsUrl.map(async id=> await getActorCredits(id)));
-    actorsCredits = [...actorsCredits.reduce((prev,next)=>[...prev].filter((media)=>next.has(media)))]
-                    .map(media => {
-                        if(media){
-                        let split = media.split(',');
-                        return{
-                            id: split[0],
-                            type: split[1]
-                        }}
-                    })
-                    .filter(media => media)
-                    .sort((a,b) => b['vote_count'] - a['vote_count']);
+    await Promise.all(actorIdsUrl.map(async id => await getActorCredits(id)));
+    actorsCredits = [...actorsCredits.reduce((prev, next) => [...prev].filter((media) => next.has(media)))]
+        .map(media => {
+            if (media) {
+                let split = media.split(',');
+                return {
+                    id: split[0],
+                    type: split[1]
+                }
+            }
+        })
+        .filter(media => media)
+        .sort((a, b) => b['vote_count'] - a['vote_count']);
     await getWatchedMedia();
-    console.log(watchedMediaList);
-    // listOfWatchedMediaCards = new Array(watchedMediaList.length).fill(null);
-    // console.log(listOfWatchedMediaCards);
-    await Promise.all(actorsCredits.map(async (media,index) => await createMediaCards(media.id,media.type,index)));
-    // console.log(actorsCredits);
-    // for(const media of actorsCredits){
-    //     await createMediaCards(media.id, media.type);
-    // }
-    // console.log(listOfWatchedMediaCards);
+    await Promise.all(actorsCredits.map(async (media, index) => {
+        await createMediaCards(media.id, media.type, index)
+    }));
     listOfWatchedMediaCards = listOfWatchedMediaCards.filter(Boolean);
-    // listOfWatchedMediaCards = listOfWatchedMediaCards.filter((_, index) => index in listOfWatchedMediaCards);
-    // listOfWatchedMediaCards = listOfWatchedMediaCards.map(card =>{ if(card) return card});
-    console.log(listOfWatchedMediaCards);
-    // console.log(listOfMediaCards);
-    // console.log(actorsCredits);
     removeErrorMessage();
     document.querySelector('.spinner-border').remove();
-    if(listOfMediaCards.length === 0){
+    if (listOfMediaCards.length === 0) {
         const noMovies = document.createElement('div');
         noMovies.classList.add('no-watched-movies');
-        noMovies.textContent = actorNamesUrl.join(", ")+" have not appeared in any movies or TV shows together!";
+        noMovies.textContent = actorNamesUrl.join(", ") + " have not appeared in any movies or TV shows together!";
         document.querySelector('.watched-result').append(noMovies);
         return;
     }
     document.querySelector('.toggle-buttons-cont').classList.remove('hidden-result');
-    if(actorNamesUrl.length>1)
-    document.getElementById('know-them-from').textContent = `${actorNamesUrl.splice(0,actorNamesUrl.length-1).join(", ")} 
-    and ${actorNamesUrl[actorNamesUrl.length-1]}
+    if (actorNamesUrl.length > 1)
+        document.getElementById('know-them-from').textContent = `${actorNamesUrl.splice(0, actorNamesUrl.length - 1).join(", ")} 
+    and ${actorNamesUrl[actorNamesUrl.length - 1]}
     have appeared together in`;
     else
-    document.getElementById('know-them-from').textContent = `${actorNamesUrl[0]} has appeared in`;
+        document.getElementById('know-them-from').textContent = `${actorNamesUrl[0]} has appeared in`;
     document.getElementById('know-them-from').textContent += `
     ${movieCount} ${movieCount === 1 ? 'movie' : 'movies'} and
     ${tvCount} ${tvCount === 1 ? 'TV show' : 'TV shows'}.`;
@@ -497,41 +435,34 @@ async function main() {
     fillAllPages();
 }
 
-async function fillCharacters(mediaId,mediaType,name){
+async function fillCharacters(mediaId, mediaType, name) {
     modal.querySelectorAll('.modal-body').forEach(body => body.remove());
     const footer = document.querySelector('.modal-footer');
     const modalSpinner = document.createElement('div')
-    modalSpinner.classList.add('spinner-border','text-dark');
+    modalSpinner.classList.add('spinner-border', 'text-dark');
     modalSpinner.style.margin = "auto";
-    footer.insertAdjacentElement('beforebegin',modalSpinner);
-    try{
-        const creditsUrl = (mediaType==='movie' ? 'credits' : 'aggregate_credits');
+    footer.insertAdjacentElement('beforebegin', modalSpinner);
+    try {
+        const creditsUrl = (mediaType === 'movie' ? 'credits' : 'aggregate_credits');
         const castResponse = await fetch(`https://api.themoviedb.org/3/${mediaType}/${mediaId}/${creditsUrl}?api_key=${MY_API_KEY}`);
         const castResult = await castResponse.json();
-        // const cast = (mediaType==='movie' ? 
-        //                 castResult['cast'].sort((a,b) => a['order'] - b['order']) :
-        //                 castResult['cast'].sort((a,b) => b['total_episode_count'] - a['total_episode_count'])
-        // );
         const cast = castResult['cast'];
         const targetIds = new Set(actorIdsUrl);
         const matchingCast = cast.filter(actor => targetIds.has(actor['id'].toString()));
-        console.log(matchingCast);
         modalSpinner.remove();
         matchingCast.forEach(actor => {
             const body = document.createElement('div');
             body.classList.add('modal-body');
-            
+
             const actorLink = document.createElement('a');
-            // actorLink.href = (`search?name=${encodeURIComponent(actor['name'] || actor['original_name'])}&id=${actor['id']}`);
-            actorLink.href = `/actor/${actor['id']}-${(actor['name'] || actor['original_name']).toLowerCase().replaceAll(' ','-')}`;
-            // actorLink.target = "_blank";
+            actorLink.href = `/actor/${actor['id']}-${(actor['name'] || actor['original_name']).toLowerCase().replaceAll(' ', '-')}`;
             actorLink.className = "modal-actor";
             actorLink.textContent = actor['name'] || actor['original_name'] || "";
 
             const charLink = document.createElement('a');
-            
+
             charLink.className = "modal-character";
-            if(mediaType==='tv')
+            if (mediaType === 'tv')
                 charLink.textContent = actor['roles'].map(role => role['character'] || "").join(' / ');
             else
                 charLink.textContent = actor['character'];
@@ -539,23 +470,20 @@ async function fillCharacters(mediaId,mediaType,name){
             charLink.href = `https://www.google.com/search?tbm=isch&q=${searchTerm}`;
             charLink.target = "_blank";
 
-            body.append(actorLink," as ",charLink);
-            footer.insertAdjacentElement('beforebegin',body);
+            body.append(actorLink, " as ", charLink);
+            footer.insertAdjacentElement('beforebegin', body);
         });
         const body = document.createElement('div');
-        body.classList.add('modal-body','last-modal-body');
+        body.classList.add('modal-body', 'last-modal-body');
 
         const mediaLink = document.createElement('a');
-        // mediaLink.href = `main?mediaName=${encodeURIComponent(name)}&mediaId=${mediaId}&mediaType=${mediaType}`;
-        mediaLink.href = `/${mediaType}/${mediaId}-${name.toLowerCase().replaceAll(' ','-')}`;
-        // mediaLink.target = "_blank";
+        mediaLink.href = `/${mediaType}/${mediaId}-${name.toLowerCase().replaceAll(' ', '-')}`;
         mediaLink.className = "modal-actor";
         mediaLink.textContent = name;
 
         body.append(mediaLink);
-        footer.insertAdjacentElement('beforebegin',body);
+        footer.insertAdjacentElement('beforebegin', body);
     }
-    catch(error){
-        console.log('cast error: ',error);
+    catch (error) {
     }
 }
