@@ -28,34 +28,33 @@
 		</div>
 	</div>
 	<div class="main-div">
-        <div class="playlist-name">
-            <div class="before-title">
-            </div>
-            <input type="text" class="title" disabled/>
-            <div class="playlist-btns">
-                <button class="" id="edit"><i class="bi bi-pencil-fill"></i></button>
-                <button class="" id="delete" data-bs-toggle="modal" data-bs-target="#delete-playlist-confirm">
-                    <i class="bi bi-trash3-fill"></i></button>
-                <button class="" id="select"><i class="bi bi-check2-square"></i></button>
-                <button class="btn hidden" id="save-name-changes">Save</button>
-                <button class="btn btn-danger hidden" data-bs-toggle="modal" data-bs-target="#delete-selection-confirm" 
-                    id="delete-selection">Delete all</button>
-                <button class="btn hidden" id="exit-selection">Leave</button>
-            </div>
-        </div>
-        <div class="error-message hidden-error">
+		<div class="playlist-name">
+			<div class="before-title">
+			</div>
+			<input type="text" class="title" disabled />
+			<div class="playlist-btns">
+				<button class="" id="edit"><i class="bi bi-pencil-fill"></i></button>
+				<button class="" id="delete" data-bs-toggle="modal" data-bs-target="#delete-playlist-confirm">
+					<i class="bi bi-trash3-fill"></i></button>
+				<button class="" id="select"><i class="bi bi-check2-square"></i></button>
+				<button class="btn hidden" id="save-name-changes">Save</button>
+				<button class="btn btn-danger hidden" data-bs-toggle="modal" data-bs-target="#delete-selection-confirm"
+					id="delete-selection">Delete all</button>
+				<button class="btn hidden" id="exit-selection">Leave</button>
+			</div>
+		</div>
+		<div class="error-message hidden-error">
 			Error message
 		</div>
-        <div class="movies">
+		<div class="movies">
 			<div class="spinner-border" role="status"></div>
-        </div>
+		</div>
 		<div class="page-toggle-cont">
 		</div>
 	</div>
 
-
-    <div class="modal fade" id="delete-playlist-confirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal fade" id="delete-playlist-confirm" data-bs-backdrop="static" data-bs-keyboard="false"
+		tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content delete-acc-modal-content">
 				<div class="modal-header" style="border-color: black;">
@@ -65,7 +64,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body" id="del-playlist-text">
-					Are you sure you want to delete playlist? You won't be able to recover it. 
+					Are you sure you want to delete playlist? You won't be able to recover it.
 				</div>
 				<div class="modal-footer" style="border-color: black;">
 					<button type="button" class="btn btn-dark" data-bs-dismiss="modal">No, go back</button>
@@ -75,10 +74,10 @@
 				</div>
 			</div>
 		</div>
-	</div>    
+	</div>
 
-    <div class="modal fade" id="delete-selection-confirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal fade" id="delete-selection-confirm" data-bs-backdrop="static" data-bs-keyboard="false"
+		tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content delete-acc-modal-content">
 				<div class="modal-header" style="border-color: black;">
@@ -88,18 +87,19 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body" id="del-sel-text">
-					Are you sure you want to delete playlist? You won't be able to recover it. 
+					Are you sure you want to delete playlist? You won't be able to recover it.
 				</div>
 				<div class="modal-footer" style="border-color: black;">
 					<button type="button" class="btn btn-dark" data-bs-dismiss="modal">No, go back</button>
-					<button type="button" class="btn btn-danger" id="confirm-delete-selection" data-bs-dismiss="modal">Yes,
+					<button type="button" class="btn btn-danger" id="confirm-delete-selection"
+						data-bs-dismiss="modal">Yes,
 						delete
 					</button>
 				</div>
 			</div>
 		</div>
-	</div>    
+	</div>
 </body>
 <script type="module" src="/static/js/playlist.js"></script>
-</html>
 
+</html>
