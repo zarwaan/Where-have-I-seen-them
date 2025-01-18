@@ -117,6 +117,7 @@ app.post('/login',(HTTPreq,HTTPres) => {
     }
     conn.query(loginQuery,[username],async (err,result)=>{
         if(err){
+            console.log(err);
             return HTTPres.status(500).json({message:"Internal Server Error", details:err, type:"ERR_INTERNAL"});
         }
         if(result.length === 0){
