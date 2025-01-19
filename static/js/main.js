@@ -1,5 +1,6 @@
 import { createProfileLink } from "./createProfileLink.js";
 import { fetchPlaylists } from "./fillPlaylists.js";
+import { getApiKey } from "./getApiKey.js";
 
 createProfileLink();
 
@@ -28,21 +29,6 @@ inputMedia.addEventListener('input', () => {
     clearTimeout(debounceTimeout);
     debounceTimeout = setTimeout(() => displayMediaOptions(inputMedia.value), 300)
 });
-
-async function getApiKey() {
-    try {
-        const apikeyResponse = await fetch("/api-key");
-        const apiResult = await apikeyResponse.json();
-        const MY_API_KEY = apiResult['api_key'];
-        const MY_BEARER_TOKEN = apiResult['bearer_token'];
-        return {
-            "api-key": MY_API_KEY,
-            "bearer-token": MY_BEARER_TOKEN
-        }
-    } catch (error) {
-        setErrorMessage("Could not contact server :(")
-    }
-}
 
 function clearOldLists() {
     var oldList = document.querySelectorAll(`div[data-whist-list-age=old]`)

@@ -1,5 +1,6 @@
 import { createProfileLink } from "./createProfileLink.js";
 import * as pagination from './pagination.js';
+import { getApiKey } from "./getApiKey.js";
 
 createProfileLink();
 var errorMessage = "";
@@ -29,22 +30,6 @@ function removeErrorMessage() { errorMessageDiv.style.display = "none"; }
 removeErrorMessage();
 
 document.querySelector('.app-name').addEventListener('click', () => window.open('/', "_self"));
-
-async function getApiKey() {
-    try {
-        const apikeyResponse = await fetch("/api-key");
-        const apiResult = await apikeyResponse.json();
-        const MY_API_KEY = apiResult['api_key'];
-        const MY_BEARER_TOKEN = apiResult['bearer_token'];
-        return {
-            "api-key": MY_API_KEY,
-            "bearer-token": MY_BEARER_TOKEN
-        }
-    }
-    catch (err) {
-        setErrorMessage("Could not fetch API key :(")
-    }
-}
 
 var spinner = document.createElement('div');
 spinner.classList.add("spinner-border", "spinner-margin");
