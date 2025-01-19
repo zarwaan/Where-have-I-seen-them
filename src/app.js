@@ -27,6 +27,12 @@ function authorizeUser(req,res,next) {
     next();
 }
 
+function authorizeAdmin(req,res,next) {
+    if(!(req.cookies.userInfo) || JSON.parse(req.cookies.userInfo).username !== 'admin')
+        return res.status(401).sendFile(path.join(__dirname, '../templates/unathorised.html'));
+    next();
+}
+
 app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname,'../templates/index.html'));
 });
