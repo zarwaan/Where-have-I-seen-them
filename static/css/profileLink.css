@@ -3,6 +3,39 @@
     src: url('../font/lato.thin.ttf');
 }
 
+@media screen and (max-width: 768px) {
+
+    .app-name {
+        font-size: 20px !important;
+    }
+
+    .app-name img {
+        width: 64px !important;
+    }
+
+    .profile-cont {
+        font-size: 20px !important;
+    }
+
+    .profile-cont i {
+        font-size: 23.7px !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .profile-cont {
+        order: -1 !important;
+    }
+
+    .app-name {
+        order: -2 !important;
+    }
+
+    .app-name+form {
+        order: 2 !important;
+    }
+}
+
 .title-bar {
     padding: 0.2rem;
     margin-top: 1rem;
@@ -10,6 +43,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    row-gap: 1rem;
 }
 
 .app-name {

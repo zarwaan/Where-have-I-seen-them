@@ -88,6 +88,7 @@ body {
     0% {
         background-color: transparent;
     }
+
     100% {
         background-color: rgb(202, 202, 202);
     }
@@ -168,4 +169,37 @@ a {
 
 .footer img {
     height: 14px;
+}
+
+body {
+    width: 100% !important;
+}
+
+@media screen and (max-width: 700px) {
+    .profile-cont {
+        position: unset;
+        display: flex;
+        justify-content: center;
+        padding-right: 0;
+        width: 100%;
+        margin: auto;
+        width: max-content;
+    }
+
+    .app-name {
+        font-size: 30px !important;
+    }
+
+    .app-name img {
+        width: 76px !important;
+    }
+
+    .footer {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
 }

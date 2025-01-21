@@ -12,7 +12,7 @@ export function createProfileLink() {
     }
     else {
         document.querySelector('i.bi').classList.add('bi-box-arrow-in-right');
-        link.href = 'signin';
+        link.href = '/signin';
         link.textContent = 'Sign in';
     }
     document.querySelector('.profile').append(link);

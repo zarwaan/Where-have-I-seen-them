@@ -193,6 +193,7 @@ input[type=text]:focus {
 
 .watch-status-div button {
     font-weight: 500;
+    border-radius: 25px;
 }
 
 #result {
@@ -336,6 +337,7 @@ body {
     gap: 5px;
     align-items: stretch;
     flex-direction: row-reverse;
+    border-radius: 25px;
 }
 
 .add-to-playlist-button i {
@@ -391,3 +393,134 @@ body {
 .hidden {
     display: none;
 }
+
+/* Small devices (phones, 576px and down) */
+@media screen and (max-width: 576px) {
+
+    /* Search input adjustments */
+    input[type=text] {
+        width: 250px;
+    }
+
+    .option-list {
+        width: 250px;
+    }
+
+    /* Main content layout */
+    .main-content {
+        width: 95%;
+        flex-direction: column;
+    }
+
+    .image-cont {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .info-cont {
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    /* Title and text sizing */
+    #media-title {
+        font-size: 32px;
+        word-wrap: break-word;
+    }
+
+    .info-cont div {
+        font-size: 16px;
+    }
+
+    /* Cast list adjustments */
+    .cast-list-header {
+        font-size: 28px;
+        margin-top: 2rem;
+    }
+
+    .cast-card {
+        min-width: 150px;
+    }
+
+    .profile-image {
+        width: 100px;
+    }
+
+    /* Watch button container */
+    .watch-cont {
+        width: 100%;
+    }
+
+    .watch-status-div {
+        /* flex-direction: column; */
+        gap: 8px;
+        text-align: center;
+        font-size: 14.5px !important;
+    }
+
+    .add-to-playlist-button {
+        font-size: 18px;
+    }
+
+    .add-to-playlist-button i::before {
+        margin-top: 0.36rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media screen and (max-width: 768px) {
+
+    .main-content {
+        width: 90%;
+    }
+
+    .image-cont {
+        width: 50%;
+    }
+
+    .info-cont {
+        width: 90%;
+    }
+
+    /* Modal adjustments */
+    .select-playlist {
+        width: 80%;
+        left: 10%;
+    }
+}
+
+/* Large devices (small laptops, 992px and down) */
+@media screen and (max-width: 992px) {
+    .media-metadata {
+        flex-wrap: wrap;
+    }
+
+    .func-buttons {
+        gap: 1rem;
+    }
+
+    .cast-list-div {
+        gap: 1.5%;
+    }
+}
+
+/* Extra large devices (laptops and desktops, 1200px and down) */
+@media screen and (max-width: 1200px) {
+    .main-content {
+        width: 85%;
+    }
+
+    #media-title {
+        font-size: 48px;
+    }
+}
+
+/* Additional accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dark mode support */
