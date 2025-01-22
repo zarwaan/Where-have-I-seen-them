@@ -9,6 +9,13 @@
         font-size: 20px !important;
     }
 
+    .title-bar {
+        justify-content: space-between !important;
+        --margin: 1rem;
+        margin-left: var(--margin);
+        margin-right: var(--margin);
+    }
+
     .app-name img {
         width: 64px !important;
     }
@@ -20,6 +27,11 @@
     .profile-cont i {
         font-size: 23.7px !important;
     }
+
+    .app-name div {
+        display: none !important;
+    }
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -33,6 +45,7 @@
 
     .app-name+form {
         order: 2 !important;
+        flex-basis: 100%;
     }
 }
 
@@ -48,7 +61,6 @@
 
 .app-name {
     font-size: 25px;
-    overflow-wrap: anywhere;
     font-family: 'logo-font', sans-serif;
     cursor: pointer;
     background-color: #f0f0f0;
@@ -90,4 +102,8 @@
 
 .profile-cont i {
     font-size: 32px;
+}
+
+body{
+    width: 100% !important;
 }

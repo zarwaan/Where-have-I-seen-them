@@ -255,3 +255,21 @@ hr {
 .hidden {
     display: none;
 }
+
+@media screen and (max-width: 700px) {
+    .main-div{
+        transform: unset;
+    }
+    .information {
+        width: 100%;
+    }
+    .user-info {
+        row-gap: 1rem;
+    }
+    .info-input{
+        gap: 0.2rem
+    }
+    .info-btns{
+        flex-direction: row;
+    }
+}

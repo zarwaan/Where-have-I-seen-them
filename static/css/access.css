@@ -33,6 +33,8 @@ body::before {
 .input-field {
     display: flex;
     flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
 }
 
 .label {
@@ -138,4 +140,26 @@ i {
 
 .hidden-icon {
     display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .main-div {
+        margin: auto;
+        width: 90%;
+        margin-top: 50%;
+        transform: translate(0%, -25%);
+    }
+
+    .main-div .input {
+        width: 90%;
+    }
+
+    .main-div input {
+        width: 100%;
+        margin: auto;
+    }
+
+    .welcome {
+        font-size: 30px;
+    }
 }
