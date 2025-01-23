@@ -31,9 +31,10 @@
 
     <div class="forms-cont">
         <div class="toggle-buttons-cont" id="actor-char">
-            <button class="toggle-button selected-button" id="actor-toggle-button">Search by actor</button>
-            <button class="toggle-button" id="character-toggle-button">Search by character</button>
+            <button class="toggle-button" id="actor-toggle-button" data-whist-btn="0">Search by actor</button>
+            <button class="toggle-button" id="character-toggle-button" data-whist-btn="1">Search by character</button>
         </div>
+
         <form id="search-form-1" class="">
             <div class="div-with-list" id="actor-list">
                 <input type="text" id="search-actor-name" placeholder="Actor name" autocomplete="off" />
@@ -55,8 +56,8 @@
     <div id="know-them-from"></div>
 
     <div class="toggle-buttons-cont hidden-result" id="which-media">
-        <button class="media-toggle-button selected-button" id="watched-media-button">Seen by you</button>
-        <button class="media-toggle-button" id="all-media-button">All media</button>
+        <button class="media-toggle-button" id="watched-media-button" data-whist-btn="0">Seen by you</button>
+        <button class="media-toggle-button" id="all-media-button" data-whist-btn="1">All media</button>
     </div>
 
     <div class="spinner-border text-light" role="status"></div>
@@ -75,7 +76,7 @@
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content character-modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Character Information</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -90,7 +91,7 @@
     </div>
 
     <div class="modal fade" id="actor-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog actor-modal-dialog modal-lg">
+        <div class="modal-dialog actor-modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content actor-modal-content">
                 <div class="modal-header actor-modal-header">
                     <h1 class="modal-title fs-5" id="actor-exampleModalLabel">Modal title</h1>

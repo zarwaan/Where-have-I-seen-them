@@ -102,7 +102,7 @@ input {
     margin-top: 1%;
     margin-bottom: 1%;
     font-size: 20px;
-   
+
 }
 
 .movie-watched-text {
@@ -183,13 +183,47 @@ input {
 
 .playlist {
     margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .playlist-content {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    width: fit-content;
+    max-width: calc(100% - 94px);
+    flex-wrap: nowrap;
     gap: 10px;
+    overflow: scroll;
+    scroll-margin: 2%;
+}
+
+.playlist-content .media-template {
+    margin-bottom: 2%;
+}
+
+.playlist-content::-webkit-scrollbar {
+    width: 0px;
+    height: 8px;
+}
+
+.playlist-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.playlist-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.playlist-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.see-more-cont {
+    flex: 0 0 fit-content;
+    padding-left: 10px;
 }
 
 .playlist-content .media-template {
@@ -197,9 +231,10 @@ input {
 }
 
 .playlist-name {
-    width: fit-content;
+    flex-basis: 100%;
     font-size: 28px;
     font-weight: 600;
+    text-align: left;
 }
 
 .see-more {
@@ -257,19 +292,33 @@ hr {
 }
 
 @media screen and (max-width: 700px) {
-    .main-div{
+    .main-div {
         transform: unset;
     }
+
     .information {
         width: 100%;
     }
+
     .user-info {
         row-gap: 1rem;
     }
-    .info-input{
+
+    .info-input {
         gap: 0.2rem
     }
-    .info-btns{
+
+    .info-btns {
         flex-direction: row;
+    }
+
+    .media-template {
+        margin-top: unset;
+    }
+
+    .movies {
+        margin-top: 1rem;
+        row-gap: 17px;
+        column-gap: 12px;
     }
 }

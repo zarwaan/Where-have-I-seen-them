@@ -71,24 +71,23 @@ function clearMediaToggle() {
         button.classList.remove('selected-button');
     });
 }
+document.querySelectorAll('.toggle-buttons-cont').forEach(cont =>
+    cont.style.setProperty('--width', `${50}%`))
 
 actorToggleButton.addEventListener('click', function () {
-    clearToggle();
-    actorToggleButton.classList.add('selected-button');
+    actorToggleButton.parentElement.style.setProperty('--left', `${(parseFloat(actorToggleButton.dataset.whistBtn) / 2) * 100}%`);
     document.getElementById('search-form-1').classList.remove('hidden-form');
     document.getElementById('search-form-2').classList.add('hidden-form');
 });
 
 characterToggleButton.addEventListener('click', function () {
-    clearToggle();
-    characterToggleButton.classList.add('selected-button');
+    characterToggleButton.parentElement.style.setProperty('--left', `${(parseFloat(characterToggleButton.dataset.whistBtn) / 2) * 100}%`);
     document.getElementById('search-form-2').classList.remove('hidden-form');
     document.getElementById('search-form-1').classList.add('hidden-form');
 });
 
 watchedMediaButton.addEventListener('click', function () {
-    clearMediaToggle();
-    watchedMediaButton.classList.add('selected-button');
+    watchedMediaButton.parentElement.style.setProperty('--left', `${(parseFloat(watchedMediaButton.dataset.whistBtn) / 2) * 100}%`);
     document.getElementById('result').classList.add('hidden-result');
     document.getElementById('watched-result').classList.remove('hidden-result');
     document.querySelector('.all-toggle-buttons-cont').classList.add('hidden-result');
@@ -96,8 +95,7 @@ watchedMediaButton.addEventListener('click', function () {
 });
 
 allMediaButton.addEventListener('click', function () {
-    clearMediaToggle();
-    allMediaButton.classList.add('selected-button');
+    allMediaButton.parentElement.style.setProperty('--left', `${(parseFloat(allMediaButton.dataset.whistBtn) / 2) * 100}%`);
     document.getElementById('result').classList.remove('hidden-result');
     document.getElementById('watched-result').classList.add('hidden-result');
     document.querySelector('.all-toggle-buttons-cont').classList.remove('hidden-result');
@@ -170,7 +168,7 @@ function fillActorInfoDIv(profileImage, text, actorId) {
     var actorBio = document.createElement('div');
     actorBio.classList.add('actor-bio');
 
-    thisIs.append(actorNameDiv, actorBio);
+    thisIs.append(actorBio);
 
     var readMore = document.createElement('a');
     readMore.classList.add('read-more');
@@ -220,7 +218,6 @@ async function searchByActorName(event, unencodedActorName, byChar = false, acto
 
             var profileImage = document.createElement('img');
             profileImage.src = imageAppend ? `https://image.tmdb.org/t/p/original/${imageAppend}` : `../static/images/no_image.jpg`;
-            profileImage.width = '80';
             profileImage.setAttribute('loading', 'lazy');
             profileImage.classList.add('profile-image');
 

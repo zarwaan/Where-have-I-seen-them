@@ -1,26 +1,44 @@
-.main-content{
+.main-content {
     width: 90%;
     margin: auto;
     margin-top: 2%;
 }
-.f404-text{
+
+.f404-text {
     width: fit-content;
     margin: auto;
     font-size: 40px;
     text-align: center;
 }
-.f404-text span{
+
+.f404-text span:not(.second) {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.img-cont{
+
+.second {
+    font-size: 25px;
+}
+
+.img-cont {
     width: fit-content;
     margin: auto;
 }
-img{
+
+img {
     width: 900px;
     border-radius: 20px;
 }
-body{
+
+body {
     background-color: black !important;
-    color: rgb(202,202,202) !important;
+    color: rgb(202, 202, 202) !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .img-cont img {
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        background-position: center;
+        width: 300px;
+    }
 }

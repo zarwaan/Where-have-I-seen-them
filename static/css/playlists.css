@@ -8,3 +8,10 @@
 .create-playlist {
     margin-top: 24px;
 }
+
+@media screen and (max-width: 700px) {
+    .main-div input {
+        width: 80%;
+        margin: auto;
+    }
+}

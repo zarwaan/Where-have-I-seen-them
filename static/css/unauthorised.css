@@ -6,3 +6,11 @@ img {
     font-size: 22px;
     margin-top: 1rem;
 }
+
+@media screen and (max-width: 1000px) {
+    .img-cont img {
+        aspect-ratio: 3/4;
+        object-fit: contain;
+        width: 300px;
+    }
+}

@@ -37,7 +37,8 @@ input[type=text]:focus {
     justify-content: center;
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
+    width: 97%;
 }
 
 .media-image {
@@ -78,7 +79,7 @@ input[type=text]:focus {
 }
 
 .forms-cont {
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
@@ -95,13 +96,43 @@ input[type=text]:focus {
 }
 
 .toggle-buttons-cont {
+    --width: 0%;
     display: flex;
+    position: relative;
     width: fit-content;
     margin: auto;
     margin-bottom: 1%;
     background-color: rgb(55, 55, 55);
     border-radius: 10px;
     margin-top: 1.5rem;
+}
+
+#actor-char {
+    --left: 0%;
+}
+
+#which-media {
+    --left: 0%;
+}
+
+.toggle-buttons-cont:not(.page-toggle-cont)::before {
+    content: '';
+    position: absolute;
+    --padding: 5;
+
+    top: calc(var(--padding) * 0.5px);
+    left: calc(var(--left) + calc(var(--padding) * 0.5px));
+    width: calc(var(--width) - calc(var(--padding) * 1px));
+    height: calc(100% - calc(var(--padding) * 1px));
+
+    left: var(--left);
+    width: var(--width);
+    top: 0%;
+    height: 100%;
+    background: gray;
+    transition: all 0.4s;
+    transition-timing-function: ease;
+    border-radius: 10px;
 }
 
 .toggle-button,
@@ -114,6 +145,9 @@ input[type=text]:focus {
     font-weight: 600;
     font-size: 14px;
     width: 9rem;
+    background: transparent;
+    flex: 1;
+    position: relative;
 }
 
 .page-toggle-button {
@@ -221,7 +255,7 @@ body::before {
     font-size: 40px;
     font-weight: 700;
     color: white;
-    text-align: left;
+    text-align: center;
     width: 97%;
     margin: auto;
 }
@@ -235,6 +269,7 @@ body::before {
     margin-top: 1rem;
     display: flex;
     gap: 0.7rem;
+    margin-bottom: 1rem;
 }
 
 .hidden-info-div {
@@ -290,6 +325,16 @@ body::before {
     text-align: left;
 }
 
+.modal-content {
+    border-radius: 25px;
+}
+
+.character-modal-content {
+    background-color: #f9faff;
+    width: 90%;
+    margin: auto;
+}
+
 .actor-modal-content {
     background-color: rgb(212, 212, 212);
 }
@@ -327,4 +372,80 @@ body {
     font-size: 30px;
     color: rgb(202, 202, 202);
     font-weight: 600;
+}
+
+@media screen and (max-width:768px) {
+    .toggle-buttons-cont {
+        margin-bottom: 1rem;
+    }
+
+    #search-form-2 {
+        flex-direction: column;
+    }
+
+    #search-form-2 input {
+        height: 40px;
+        margin: auto;
+    }
+
+    .profile-image {
+        aspect-ratio: 2/3 !important;
+        height: 150px;
+    }
+
+    .actor-info-div {
+        width: 80%;
+        height: calc(150px + 2%);
+    }
+
+    .this-is {
+        height: 150px;
+    }
+
+    .actor-name {
+        font-size: 20px;
+    }
+
+    .actor-bio {
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    #know-them-from {
+        font-size: 25px;
+    }
+
+    .actor-modal-content {
+        width: 80%;
+        margin: auto;
+        max-height: 75% !important;
+    }
+
+    .actor-modal-image {
+        width: 130px;
+    }
+
+    .actor-modal-info {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:576px) {
+
+    .media-image,
+    .no-media-image {
+        height: unset;
+        aspect-ratio: 2/3;
+        width: 85px;
+    }
+
+    #result,
+    #watched-result {
+        column-gap: 12px;
+        row-gap: 17px;
+    }
+
+    .media-title {
+        font-size: 0px;
+    }
 }

@@ -118,6 +118,7 @@ if (document.getElementById('change-password-form'))
 
 function showMessageDiv(message) {
     successMessageDiv.innerHTML = message;
+    successMessageDiv.style.display = 'unset';
     successMessageDiv.style.setProperty('left', `calc(50% - ${successMessageDiv.clientWidth / 2}px)`);
     successMessageDiv.style.setProperty('transform', `translateY(calc(${innerHeight * 0.03}px + ${successMessageDiv.clientHeight}px))`);
     document.querySelector('.main-div').style.display = 'none';

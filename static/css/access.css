@@ -107,6 +107,7 @@ a {
     font-weight: 400;
     border-radius: 15px;
     transition: transform 0.3s linear;
+    display: none;
 }
 
 .error-message {
@@ -146,8 +147,7 @@ i {
     .main-div {
         margin: auto;
         width: 90%;
-        margin-top: 50%;
-        transform: translate(0%, -25%);
+        margin-top: 1.7rem;
     }
 
     .main-div .input {
@@ -161,5 +161,10 @@ i {
 
     .welcome {
         font-size: 30px;
+    }
+
+    .successful {
+        font-size: 25px;
+        width: 90%;
     }
 }
