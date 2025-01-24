@@ -114,7 +114,7 @@ async function createMediaCards() {
         mediaImage.classList.add('media-image');
         mediaCard.appendChild(mediaImage);
         const mediaCardName = document.createElement('div');
-        mediaCardName.textContent = mediaName;
+        mediaCardName.innerHTML = mediaName+`&nbsp;`;
         mediaCardName.classList.add('media-title');
         mediaCard.appendChild(mediaCardName);
 
@@ -197,7 +197,7 @@ async function addIndvDeleteOption(numbering = true) {
         n++;
         const removeMedia = document.createElement('span');
         removeMedia.classList.add('delete-icon');
-        removeMedia.innerHTML = `&nbsp <i class="bi bi-trash3-fill"></i>`;
+        removeMedia.innerHTML = `<i class="bi bi-trash3-fill"></i>`;
         removeMedia.onclick = async (event) => {
             event.stopPropagation();
             await removeFromPlaylist(card);

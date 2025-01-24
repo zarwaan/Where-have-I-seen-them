@@ -20,7 +20,7 @@
     margin-bottom: 20px;
     font-size: 35px;
     display: flex;
-    width: 92%;
+    width: 95%;
     position: relative;
 }
 
@@ -28,8 +28,12 @@
     display: flex;
     width: 20%;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     gap: 0.2rem;
+}
+
+.playlist-btns button {
+    z-index: 99;
 }
 
 .title {
@@ -47,12 +51,19 @@
     z-index: 99;
 }
 
+.title:disabled {
+    color: rgb(202, 202, 202);
+    background-color: transparent;
+}
+
 .playlist-btns button:not(#save-name-changes, #delete-selection, #exit-selection) {
     color: rgb(202, 202, 202) !important;
     font-size: 22px;
     background: transparent;
     border: none;
     outline: none;
+    width: 33%;
+    padding: 0;
 }
 
 .playlist-btns button .bi-check2-square {
@@ -81,9 +92,9 @@
     color: black;
 }
 
-#delete-selection {
+/* #delete-selection {
     margin-right: 10px;
-}
+} */
 
 #save-name-changes:hover {
     background-color: rgb(167, 167, 167);
@@ -117,4 +128,51 @@
 .error-message {
     margin-bottom: 20px;
     font-size: 18px;
+}
+
+@media screen and (max-width: 700px) {
+    .title {
+        font-size:24px;
+        width: 60% !important;
+    }
+    .playlist-btns {
+        width: 40%;
+    }
+    .playlist-btns button:not(#save-name-changes, #delete-selection, #exit-selection) {
+        font-size: 22px;
+        font-size: 18px;
+    }
+    
+    .playlist-btns button .bi-check2-square {
+        font-size: 20.5px;
+    }
+    .editable-name {
+        width: 60%;
+    }
+    #delete-selection, #exit-selection, #save-name-changes {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:576px) {
+
+    .media-image,
+    .no-media-image {
+        height: unset;
+        aspect-ratio: 2/3;
+        width: 85px;
+    }
+
+    .movies {
+        row-gap: 17px;
+        column-gap: 12px;
+    }
+
+    .media-title {
+        font-size: 0px;
+    }
+
+    .media-title span.delete-icon {
+        font-size: 14px;
+    }
 }

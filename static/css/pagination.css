@@ -19,6 +19,7 @@
     font-weight: 600;
     width: 35px;
     font-size: 22px;
+    text-align: center;
 }
 
 .page-toggle-cont {
@@ -29,6 +30,11 @@
     background-color: rgb(55, 55, 55);
     border-radius: 10px;
     margin-top: 1.2rem;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 95%;
 }
 
 .selected-button {

@@ -143,7 +143,7 @@ input[type=text]:focus {
     padding: 3%;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     width: 9rem;
     background: transparent;
     flex: 1;
@@ -162,6 +162,11 @@ input[type=text]:focus {
 
 .page-toggle-cont {
     margin-top: 1.2rem;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 95%;
 }
 
 .selected-button {

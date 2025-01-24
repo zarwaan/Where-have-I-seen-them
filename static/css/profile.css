@@ -80,8 +80,12 @@ i {
 
 input {
     height: 36px;
-    background-color: rgb(150, 150, 150);
+    /* background-color: rgb(150, 150, 150); */
     border: none;
+}
+
+input:disabled {
+    background-color: rgb(150, 150, 150);
 }
 
 .not-disabled {
