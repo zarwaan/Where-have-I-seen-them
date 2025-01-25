@@ -133,7 +133,7 @@
 
 @media screen and (max-width: 700px) {
     .title {
-        font-size:24px;
+        font-size:28px;
         width: 60% !important;
     }
     .playlist-btns {
@@ -152,6 +152,10 @@
     }
     #delete-selection, #exit-selection, #save-name-changes {
         font-size: 13px;
+    }
+    .playlist-name {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
     }
 }
 
