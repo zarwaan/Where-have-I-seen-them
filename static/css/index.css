@@ -180,10 +180,17 @@ body {
         position: unset;
         display: flex;
         justify-content: center;
-        padding-right: 0;
+        /* padding-right: 0; */
         width: 100%;
         margin: auto;
         width: max-content;
+        float: right;
+        font-size: 20px;
+        margin-top: 0.7rem;
+    }
+
+    .profile-cont i {
+        font-size: 23.7px;
     }
 
     .app-name {

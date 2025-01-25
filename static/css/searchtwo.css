@@ -35,6 +35,7 @@ input {
 #search-form-2,
 #search-form-3,
 #search-form-4 {
+    margin: unset;
     display: inline-flex;
     gap: 0px;
 }
@@ -61,4 +62,52 @@ input {
     border-bottom: none;
     font-weight: 700;
     font-size: 25px;
+}
+
+.modal-content {
+    background-color: #f9faff;
+    width: 90%;
+    margin: auto;
+}
+
+@media screen and (max-width: 868px) {
+    #search-form-2 {
+        flex-direction: unset;
+    }
+    .forms-cont {
+        width: unset;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    input {
+        width: 250px;
+    }
+    #know-them-from {
+        margin-top: 1rem;
+    }
+    .toggle-buttons-cont {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    input {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .forms-cont {
+        width: 95%;
+    }
+    input {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #know-them-from {
+        font-size: 20px;
+    }
 }

@@ -175,9 +175,10 @@ document.getElementById('search-btn').addEventListener('click', () => {
     window.open(`/actor-group?actorNames=${encodeURIComponent(actorNames)}&actorIds=${encodeURIComponent(actorIds)}`, '_self');
 });
 
+document.querySelector('.toggle-buttons-cont').style.setProperty('--width', `${50}%`)
+
 watchedMediaButton.addEventListener('click', function () {
-    clearMediaToggle();
-    watchedMediaButton.classList.add('selected-button');
+    watchedMediaButton.parentElement.style.setProperty('--left', `${(parseFloat(watchedMediaButton.dataset.whistBtn) / 2) * 100}%`);
     document.getElementById('result').classList.add('hidden-result');
     document.getElementById('watched-result').classList.remove('hidden-result');
     document.querySelector('.all-toggle-buttons-cont').classList.add('hidden-result');
@@ -185,8 +186,7 @@ watchedMediaButton.addEventListener('click', function () {
 });
 
 allMediaButton.addEventListener('click', function () {
-    clearMediaToggle();
-    allMediaButton.classList.add('selected-button');
+    allMediaButton.parentElement.style.setProperty('--left', `${(parseFloat(allMediaButton.dataset.whistBtn) / 2) * 100}%`);
     document.getElementById('result').classList.remove('hidden-result');
     document.getElementById('watched-result').classList.add('hidden-result');
     document.querySelector('.all-toggle-buttons-cont').classList.remove('hidden-result');

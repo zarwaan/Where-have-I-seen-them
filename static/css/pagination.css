@@ -20,6 +20,9 @@
     width: 35px;
     font-size: 22px;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
 }
 
 .page-toggle-cont {

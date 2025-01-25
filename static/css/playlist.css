@@ -54,6 +54,7 @@
 .title:disabled {
     color: rgb(202, 202, 202);
     background-color: transparent;
+    -webkit-text-fill-color: rgb(202, 202, 202);
 }
 
 .playlist-btns button:not(#save-name-changes, #delete-selection, #exit-selection) {
