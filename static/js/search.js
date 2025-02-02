@@ -234,8 +234,8 @@ async function searchByActorName(event, unencodedActorName, byChar = false, acto
                         media['character'] !== "Self - Host" &&
                         media['character'].toLowerCase() !== "himself" &&
                         media['character'].toLowerCase() !== "herself" &&
-                        (!media['genre_ids'].includes(10764)) &&
-                        (!media['genre_ids'].includes(10767))
+                        (!media['genre_ids']?.includes(10764)) &&
+                        (!media['genre_ids']?.includes(10767))
                     )
                 ) {
                     var title = media['title'] || media['name'];
