@@ -32,7 +32,7 @@ Ensure the following are installed on your system:
 ### Steps to Run Locally
 1. Clone the Git repository or download the source code:
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/zarwaan/Where-have-I-seen-them.git
    cd <project-directory>
    ```
 2. Install dependencies:
